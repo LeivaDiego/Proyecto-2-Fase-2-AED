@@ -1,5 +1,4 @@
 import java.util.LinkedList;
-import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -16,6 +15,7 @@ public class Main {
         LinkedList<String> studios = new LinkedList<>();
         String genre;
         String studio;
+        String anime;
         int option = 0;
         vista.printWelcome();
         vista.printLogIn();
@@ -46,11 +46,14 @@ public class Main {
                                     vista.printList(genres);
                                     vista.printSelect();
                                     option = input.nextInt();
-                                    genre = vista.getGenreByIndex(option,genres);
+                                    genre = vista.getByIndex(option,genres);
                                     System.out.println("Animes del genero: "+genre);
                                     vista.printList(db.getAnimesByGenre(genre));
                                     vista.printSelect();
-
+                                    option = input.nextInt();
+                                    anime = vista.getByIndex(option,db.getAnimesByGenre(genre));
+                                    System.out.println("Esta es la informacion de: "+anime);
+                                    vista.showAnimeInfo(db.getAnimeInfo(anime));
                                     break;
                                 case 2:
                                     option = 0;
@@ -59,10 +62,14 @@ public class Main {
                                     vista.printList(studios);
                                     vista.printSelect();
                                     option = input.nextInt();
-                                    studio = vista.getGenreByIndex(option,studios);
+                                    studio = vista.getByIndex(option,studios);
                                     System.out.println("Los animes que el estudio "+studio+" ha animado son:");
                                     vista.printList(db.getAnimesByStudio(studio));
                                     vista.printSelect();
+                                    option = input.nextInt();
+                                    anime = vista.getByIndex(option,db.getAnimesByStudio(studio));
+                                    System.out.println("Esta es la informacion de: "+anime);
+                                    vista.showAnimeInfo(db.getAnimeInfo(anime));
                                     break;
                             }
                             break;

@@ -1,5 +1,5 @@
 import java.util.LinkedList;
-import java.util.List;
+import java.util.Map;
 
 /**
  * Clase encargada de mostrarle mensajes a los usuarios en consola
@@ -8,13 +8,23 @@ import java.util.List;
 public class View {
 
     /**
+     * Metodo que muestra la informacion del anime
+     * @param animeInfo
+     */
+    public void showAnimeInfo(Map<String, Object> animeInfo) {
+        for (Map.Entry<String, Object> entry : animeInfo.entrySet()) {
+            System.out.println(entry.getKey() + ": " + entry.getValue());
+        }
+    }
+
+    /**
      * Metodo que obtiene el nombre del genero dependiendo de su indice
      * @param index el indice elegido
-     * @param genres el listado de generos
+     * @param list el listado de generos
      * @return
      */
-    public String getGenreByIndex(int index, LinkedList<String> genres) {
-        return genres.get(index);  // Los índices de la lista comienzan en 0
+    public String getByIndex(int index, LinkedList<String> list) {
+        return list.get(index);  // Los índices de la lista comienzan en 0
     }
 
     /**

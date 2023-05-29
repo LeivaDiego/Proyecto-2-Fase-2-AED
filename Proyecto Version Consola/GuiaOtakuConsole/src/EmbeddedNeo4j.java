@@ -12,6 +12,8 @@ import static org.neo4j.driver.Values.parameters;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
+
 /**
  * Clase que tiene los metodos necesarios para conectarse e interactuar con una base de datos en Neo4j
  * @author diego leiva, pablo orellana
@@ -207,6 +209,24 @@ public class EmbeddedNeo4j implements AutoCloseable {
         }
     }
 
+    /**
+     * Metodo que devuelve toda la informacion de un anime en especifico
+     * @param title el titulo del anime
+     * @return un map con la informacion completa del anime
+     */
+    public Map<String, Object> getAnimeInfo(String title) {
+        try ( Session session = driver.session() ) {
+            Map<String, Object> animeInfo = session.readTransaction(new TransactionWork<Map<String, Object>>() {
+                @Override
+                public Map<String, Object> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (a:Anime {titulo: $title}) RETURN a",
+                            parameters("title", title));
+                    Record record = result.single();
+                    return record.get("a").asNode().asMap();
+                }
+            });
 
-
+            return animeInfo;
+        }
+    }
 }
