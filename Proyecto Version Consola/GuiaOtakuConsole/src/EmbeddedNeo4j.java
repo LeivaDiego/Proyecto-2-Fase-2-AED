@@ -9,7 +9,6 @@ import org.neo4j.driver.TransactionWork;
 
 import static org.neo4j.driver.Values.parameters;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -225,8 +224,124 @@ public class EmbeddedNeo4j implements AutoCloseable {
                     return record.get("a").asNode().asMap();
                 }
             });
-
             return animeInfo;
+        }
+    }
+
+    /**
+     * Metodo que verifica si el usuario ya tiene intereses por generos o estudios
+     * @param username el nombre del usuario actual
+     * @return verdadero si ya hay intereses, falso si no
+     */
+    public boolean userHasInterests(String username) {
+        try ( Session session = driver.session() ) {
+            boolean hasInterests = session.readTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: $username})-[:INTERESADO]->() RETURN COUNT(*) AS relCount",
+                            parameters("username", username));
+                    return result.single().get("relCount").asInt() > 0;
+                }
+            });
+            return hasInterests;
+        }
+    }
+
+    /**
+     * Metodo para recopilar los generos de anime en los que el usuario actual esta interesado
+     * @param username el usuario actual
+     * @return listado de los generos de anime en los que el usuario esta interesado
+     */
+    public LinkedList<String> getUserInterestsGenres(String username) {
+        try ( Session session = driver.session() ) {
+            LinkedList<String> interestsGenres = session.readTransaction(new TransactionWork<LinkedList<String>>() {
+                @Override
+                public LinkedList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: $username})-[r:INTERESADO]->(g:Genero) RETURN g.nombre AS genreName",
+                            parameters("username", username));
+
+                    LinkedList<String> genres = new LinkedList<>();
+                    while (result.hasNext()) {
+                        Record record = result.next();
+                        genres.add(record.get("genreName").asString());
+                    }
+
+                    return genres;
+                }
+            });
+
+            return interestsGenres;
+        }
+    }
+
+    /**
+     * Metodo para recopilar los estudios de animacion en los que el usuario actual esta interesado
+     * @param username el usuario actual
+     * @return listado de los estudios de animacion en los que el usuario esta interesado
+     */
+    public LinkedList<String> getUserInterestsStudios(String username) {
+        try ( Session session = driver.session() ) {
+            LinkedList<String> interestsStudios = session.readTransaction(new TransactionWork<LinkedList<String>>() {
+                @Override
+                public LinkedList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: $username})-[r:INTERESADO]->(s:Estudio) RETURN s.nombre AS studioName",
+                            parameters("username", username));
+
+                    LinkedList<String> studios = new LinkedList<>();
+                    while (result.hasNext()) {
+                        Record record = result.next();
+                        studios.add(record.get("studioName").asString());
+                    }
+
+                    return studios;
+                }
+            });
+
+            return interestsStudios;
+        }
+    }
+
+    /**
+     * Metodo que crea las relaciones de interes del usuario
+     * @param username el usuario actual
+     * @param genres los generos seleccionados
+     * @param studios los estudios seleccionados
+     */
+    public void createInterests(String username, List<String> genres, List<String> studios) {
+        try (Session session = driver.session()) {
+            session.writeTransaction(new TransactionWork<Void>() {
+                @Override
+                public Void execute(Transaction tx) {
+                    for (String genre : genres) {
+                        tx.run("MATCH (u:Usuario {username: $username}), (g:Genero {nombre: $genre}) " +
+                                        "MERGE (u)-[:INTERESADO]->(g)",
+                                parameters("username", username, "genre", genre));
+                    }
+                    for (String studio : studios) {
+                        tx.run("MATCH (u:Usuario {username: $username}), (s:Estudio {nombre: $studio}) " +
+                                        "MERGE (u)-[:INTERESADO]->(s)",
+                                parameters("username", username, "studio", studio));
+                    }
+                    return null;
+                }
+            });
+        }
+    }
+
+    /**
+     * Metodo que remueve todos los intereses actuales del usuario para que pueda ver otras recomendaciones
+     * @param username el usuario actual
+     */
+    public void resetInterests(String username) {
+        try (Session session = driver.session()) {
+            session.writeTransaction(new TransactionWork<Void>() {
+                @Override
+                public Void execute(Transaction tx) {
+                    tx.run("MATCH (u:Usuario {username: $username})-[r]-() DELETE r",
+                            parameters("username", username));
+                    return null;
+                }
+            });
         }
     }
 }

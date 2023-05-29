@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Scanner;
 
 /**
@@ -20,6 +21,8 @@ public class Main {
         vista.printWelcome();
         vista.printLogIn();
         option = input.nextInt();
+        genres = db.getGenres();
+        studios = db.getStudios();
         switch (option){
             case 1:
                 System.out.println("Ingrese su username: ");
@@ -42,7 +45,6 @@ public class Main {
                                 case 1:
                                     option = 0;
                                     System.out.println("Los generos disponibles son: ");
-                                    genres = db.getGenres();
                                     vista.printList(genres);
                                     vista.printSelect();
                                     option = input.nextInt();
@@ -58,7 +60,6 @@ public class Main {
                                 case 2:
                                     option = 0;
                                     System.out.println("Los estudios son: ");
-                                    studios = db.getStudios();
                                     vista.printList(studios);
                                     vista.printSelect();
                                     option = input.nextInt();
@@ -74,10 +75,39 @@ public class Main {
                             }
                             break;
                         case 2:
-                            //preferencias
+                            vista.printMessage("=== Preferencias ===");
+                            if (db.userHasInterests(currentUser.getUsername())){
+                                System.out.println("Actualmente ya tienes estas preferencias: ");
+                                System.out.println("Generos: ");
+                                vista.printList(db.getUserInterestsGenres(currentUser.getUsername()));
+                                System.out.println("Estudios: ");
+                                vista.printList(db.getUserInterestsStudios(currentUser.getUsername()));
+                                System.out.println("Deseas resetear tus preferencias?");
+                                System.out.println("1. SI");
+                                System.out.println("2. NO");
+                                vista.printSelect();
+                                option = input.nextInt();
+                                if (option==1){
+                                    db.resetInterests(currentUser.getUsername());
+                                }
+
+                            }else {
+                                System.out.println("Te invitamos a que selecciones tus categorias de interes!");
+                                System.out.println("GENEROS");
+                                System.out.println("Selecciona los que mas te gusten");
+                                vista.printList(genres);
+                                List<String> genreInterest = seguridad.validFormatPref(genres);
+                                System.out.println("Excelente ahora la siguiente categoria");
+                                System.out.println("ESTUDIOS");
+                                System.out.println("Selecciona los que mas te gusten");
+                                vista.printList(studios);
+                                List<String> studioInterest = seguridad.validFormatPref(studios);
+                                System.out.println("Tus preferencias se han guardado exitosamente");
+                                db.createInterests(currentUser.getUsername(),genreInterest,studioInterest);
+                            }
                             break;
                         case 3:
-                            //recomendados
+                            
                             break;
                         case 4:
                             // mi perfil
@@ -119,8 +149,5 @@ public class Main {
                 //Por si elije otra opcion
                 break;
         }
-
     }
-
-
 }
