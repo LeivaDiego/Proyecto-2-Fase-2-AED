@@ -6,10 +6,10 @@ import org.neo4j.driver.Result;
 import org.neo4j.driver.Session;
 import org.neo4j.driver.Transaction;
 import org.neo4j.driver.TransactionWork;
-import org.neo4j.driver.summary.ResultSummary;
 
 import static org.neo4j.driver.Values.parameters;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 /**
@@ -17,42 +17,43 @@ import java.util.List;
  * @author diego leiva, pablo orellana
  * Referencia: Malonso-UVG
  */
-public class EmbeddedNeo4j implements AutoCloseable{
+public class EmbeddedNeo4j implements AutoCloseable {
 
     private final Driver driver;
 
 
     /**
      * Constructor del driver
-     * @param uri bolt url
-     * @param user user
+     *
+     * @param uri      bolt url
+     * @param user     user
      * @param password password
      */
-    public EmbeddedNeo4j( String uri, String user, String password )
-    {
-        driver = GraphDatabase.driver( uri, AuthTokens.basic( user, password ) );
+    public EmbeddedNeo4j(String uri, String user, String password) {
+        driver = GraphDatabase.driver(uri, AuthTokens.basic(user, password));
     }
 
     /**
      * Cierra la conexion
+     *
      * @throws Exception
      */
     @Override
-    public void close() throws Exception
-    {
+    public void close() throws Exception {
         driver.close();
     }
 
     /**
      * Obtiene todos los generos almacenados en la base de datos
+     *
      * @return un listado con los generos de la base de datos
      */
     public LinkedList<String> getGenres() {
-        try ( Session session = driver.session() ) {
-            LinkedList<String> genres = session.readTransaction( new TransactionWork<LinkedList<String>>() {
+        try (Session session = driver.session()) {
+            LinkedList<String> genres = session.readTransaction(new TransactionWork<LinkedList<String>>() {
                 @Override
-                public LinkedList<String> execute( Transaction tx ) {
-                    Result result = tx.run( "MATCH (g:Genero) RETURN g.nombre");
+                public LinkedList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (g:Genero) RETURN g.nombre");
                     LinkedList<String> mygenres = new LinkedList<>();
                     List<Record> registros = result.list();
                     for (Record registro : registros) {
@@ -67,14 +68,15 @@ public class EmbeddedNeo4j implements AutoCloseable{
 
     /**
      * Obtiene un listdo de todos los estudios en la base de datos
+     *
      * @return el listado de todos los estudios en la base de datos
      */
     public LinkedList<String> getStudios() {
-        try ( Session session = driver.session() ) {
-            LinkedList<String> studios = session.readTransaction( new TransactionWork<LinkedList<String>>() {
+        try (Session session = driver.session()) {
+            LinkedList<String> studios = session.readTransaction(new TransactionWork<LinkedList<String>>() {
                 @Override
-                public LinkedList<String> execute( Transaction tx ) {
-                    Result result = tx.run( "MATCH (e:Estudio) RETURN e.nombre");
+                public LinkedList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (e:Estudio) RETURN e.nombre");
                     LinkedList<String> mystudios = new LinkedList<>();
                     List<Record> registros = result.list();
                     for (Record registro : registros) {
@@ -89,6 +91,7 @@ public class EmbeddedNeo4j implements AutoCloseable{
 
     /**
      * Revisa si las credenciales del usuario son correctas o no
+     *
      * @param username el nombre de usuario
      * @param password la contrasenia
      * @return verdadero si estan correctas, falso si no lo estan
@@ -108,20 +111,6 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
 
-    /**
-     * Realiza el inicio de sesion para que sepamos que usuario esta usando el sistema
-     * @param username el nombre de usuario
-     * @param password su contrasenia
-     */
-    public void login(String username, String password) {
-        if (checkCredentials(username, password)) {
-            Usuario currentUser = new Usuario();
-            currentUser.setUsername(username);
-            System.out.println("Bienvenido: "+currentUser.getUsername().toString());
-        } else {
-            System.out.println("Usuario o contraseña no validos");
-        }
-    }
 
     /**
      * Verifica si el nombre de usuario ya existe en la base de datos para evitar crear usuarios repetidos
@@ -171,6 +160,53 @@ public class EmbeddedNeo4j implements AutoCloseable{
             }
         }
     }
+
+    /**
+     * Metodo que obtiene el listado de animes diposnibles dependiendo del genero que seleccione el usuario
+     * @param genre el genero que selecciono el usuario
+     * @return el listado de animes que pertenecen a ese genero
+     */
+    public LinkedList<String> getAnimesByGenre(String genre) {
+        try ( Session session = driver.session() ) {
+            return session.readTransaction(new TransactionWork<LinkedList<String>>() {
+                @Override
+                public LinkedList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (a:Anime)-[:PERTENECE]->(g:Genero {nombre: $genre}) RETURN a.titulo",
+                            parameters("genre", genre));
+
+                    LinkedList<String> animes = new LinkedList<>();
+                    while (result.hasNext()) {
+                        animes.add(result.next().get("a.titulo").asString());
+                    }
+                    return animes;
+                }
+            });
+        }
+    }
+
+    /**
+     * Metodo que obtiene un listado de animes diponibles dependiendo del estudio de animacion que seleccione el usuario
+     * @param studio el estudio de animacion seleccionado
+     * @return el listado de animes que fuerona animados por el estudio
+     */
+    public LinkedList<String> getAnimesByStudio(String studio) {
+        try ( Session session = driver.session() ) {
+            return session.readTransaction(new TransactionWork<LinkedList<String>>() {
+                @Override
+                public LinkedList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (a:Anime)<-[:ANIMACION]-(s:Estudio {nombre: $studio}) RETURN a.titulo",
+                            parameters("studio", studio));
+
+                    LinkedList<String> animes = new LinkedList<>();
+                    while (result.hasNext()) {
+                        animes.add(result.next().get("a.titulo").asString());
+                    }
+                    return animes;
+                }
+            });
+        }
+    }
+
 
 
 }

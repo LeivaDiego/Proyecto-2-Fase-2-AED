@@ -1,4 +1,5 @@
 import java.util.LinkedList;
+import java.util.List;
 
 /**
  * Clase encargada de mostrarle mensajes a los usuarios en consola
@@ -6,6 +7,15 @@ import java.util.LinkedList;
  */
 public class View {
 
+    /**
+     * Metodo que obtiene el nombre del genero dependiendo de su indice
+     * @param index el indice elegido
+     * @param genres el listado de generos
+     * @return
+     */
+    public String getGenreByIndex(int index, LinkedList<String> genres) {
+        return genres.get(index);  // Los índices de la lista comienzan en 0
+    }
 
     /**
      * Metodo para la impresion de listados
@@ -51,7 +61,7 @@ public class View {
         System.out.println("2. Preferencias");
         System.out.println("3. Recomendaciones");
         System.out.println("4. Mi Usuario");
-        System.out.println("5. Salir");
+        System.out.println("5. Cerrar Sesión");
         printSelect();
     }
 
@@ -75,6 +85,10 @@ public class View {
         System.out.println("1. Ver animes por Género");
         System.out.println("2. Ver animes por Estudio");
         printSelect();
+    }
+
+    public void printWelcomeUser(Usuario user){
+        System.out.println("\nBienvenido :"+user.getUsername());
     }
 }
 
