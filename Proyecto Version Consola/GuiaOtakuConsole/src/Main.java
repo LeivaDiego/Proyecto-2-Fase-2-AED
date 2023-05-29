@@ -1,5 +1,10 @@
+/**
+ * Programa de recomendaciones de Anime
+ * @author diego leiva, pablo orellana
+ */
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
+        View view = new View();
+        view.printWelcome();
     }
 }

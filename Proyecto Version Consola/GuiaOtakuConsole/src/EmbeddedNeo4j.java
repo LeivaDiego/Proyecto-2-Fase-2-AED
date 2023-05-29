@@ -1,7 +1,3 @@
-/**
- * 
- */
-
 import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.GraphDatabase;
@@ -17,8 +13,9 @@ import static org.neo4j.driver.Values.parameters;
 import java.util.LinkedList;
 import java.util.List;
 /**
- * @author Administrator
- *
+ * Clase que tiene los metodos necesarios para conectarse e interactuar con una base de datos en Neo4j
+ * @author diego leiva, pablo orellana
+ * Referencia: Malonso-UVG
  */
 public class EmbeddedNeo4j implements AutoCloseable{
 
