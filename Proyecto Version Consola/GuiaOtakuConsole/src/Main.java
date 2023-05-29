@@ -23,16 +23,19 @@ public class Main {
                 db.login(username,password);
                 break;
             case 2:
-                System.out.println("Porfavor complete los siguientes campos: \n");
+                System.out.println("Porfavor complete los siguientes campos");
+                System.out.println("Ingrese el nombre de usuario que desea: ");
+                String registerUser = input.next();
                 System.out.println("Ingrese su nombre: ");
                 String firstname = input.next();
                 System.out.println("Ingrese su apellido: ");
                 String lastname = input.next();
-                System.out.println("Ingrese el nombre de usuario que desea: ");
-                String registerUser = input.next();
-                System.out.println();
                 System.out.println("Ingrese su contraseña: ");
                 String contra = input.next();
+                if (db.createUser(registerUser,contra,firstname,lastname))
+                {
+                    System.out.println("Usuario Creado Existosamente");
+                }else System.out.println("El usuario ya existe, intente nuevamente");
                 break;
             case 3:
                 vista.printMessage("Gracias por utilizar LaGuiaOtaku");
