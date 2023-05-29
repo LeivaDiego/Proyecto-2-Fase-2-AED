@@ -4,7 +4,8 @@
  */
 public class Main {
     public static void main(String[] args) {
-        View view = new View();
-        view.printWelcome();
+        View vista = new View();
+        vista.printWelcome();
+        vista.printHomePage();
     }
 }

@@ -6,11 +6,12 @@ import java.util.LinkedList;
  */
 public class View {
 
+
     /**
      * Metodo para la impresion de listados
      * @param list la lista a mostrar
      */
-    public static void printList(LinkedList<String> list) {
+    public void printList(LinkedList<String> list) {
         for (int i = 0; i < list.size(); i++) {
             String item = list.get(i);
             System.out.println(i + ". " + item);
@@ -20,7 +21,7 @@ public class View {
     /**
      * Metodo que muestra el mensaje de bienvenida al usuario
      */
-    public static void printWelcome() {
+    public void printWelcome() {
         System.out.println("************************************************");
         System.out.println("*                                              *");
         System.out.println("*               La Guia Otaku                  *");
@@ -33,7 +34,7 @@ public class View {
     /**
      * Metodo que muestra la "ventana" de inicio de sesion o registro al usuario
      */
-    public static void printLogIn(){
+    public void printLogIn(){
         System.out.println("Para ingresar a nuestro sistema porfavor elija una opción");
         System.out.println("1. Iniciar sesión");
         System.out.println("2. Registrarse");
@@ -44,7 +45,7 @@ public class View {
     /**
      * Metodo que muestra el menu principal de opciones al usuario
      */
-    public static void printHomePage(){
+    public void printHomePage(){
         System.out.println("==== Menú Principal ====");
         System.out.println("1. Explorar");
         System.out.println("2. Preferencias");
@@ -57,7 +58,7 @@ public class View {
     /**
      * Mensaje de seleccion de opcion
      */
-    public static void printSelect(){
+    public void printSelect(){
         System.out.println("Seleccione una opción: \n");
     }
 
@@ -65,10 +66,15 @@ public class View {
      * Metodo que muestra un mensaje en pantalla
      * @param msg el mensaje a mostrar
      */
-    public static void printMessage(String msg){
+    public void printMessage(String msg){
         System.out.println(msg+"\n");
     }
 
-
+    public void printExplore(){
+        System.out.println("=== Explorar ===");
+        System.out.println("1. Ver animes por Género");
+        System.out.println("2. Ver animes por Estudio");
+        printSelect();
+    }
 }
 
