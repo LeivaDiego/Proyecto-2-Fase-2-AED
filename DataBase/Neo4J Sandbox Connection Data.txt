@@ -1,0 +1,10 @@
+Neo4J Sandbox Data
+
+Connection Details:
+- Username: neo4j
+- Password: task-default-soap
+- IP Address:44.204.86.134
+- HTTP Port:7474
+- Bolt Port:7687
+- Bolt URL: bolt://44.204.86.134:7687
+- Websocket Bolt URL: bolt+s://22309649c26c1a39bfd6eee8d38f3be6.neo4jsandbox.com:7687
