@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LaGuiaOTAKU - Registro</title>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      background-color: #191919;
+      color: #fff;
+    }
+    
+    h1 {
+      font-size: 48px;
+      margin-bottom: 20px;
+      color: #F44336;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    
+    .signup-form {
+      max-width: 300px;
+      width: 100%;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 5px;
+    }
+    
+    .signup-form input[type="text"],
+    .signup-form input[type="password"] {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+    }
+    
+    .signup-form input[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      background-color: #F44336;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      border-radius: 3px;
+    }
+    
+    .password-verification {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #fff;
+    }
+  </style>
+  <script>
+    function validateForm() {
+      var passwordInput = document.getElementById("password");
+      var password = passwordInput.value;
+      
+      if (password.length < 8) {
+        alert("La contraseña debe tener al menos 8 caracteres.");
+        return false;
+      }
+      
+      return true;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>LaGuiaOTAKU</h1>
+    <form class="signup-form" action="Home.html" method="post" onsubmit="return validateForm();">
+      <h2>Registro de usuario</h2>
+      <p>Llena los campos:</p>
+      <input type="text" name="nombre" placeholder="Nombre" required>
+      <input type="text" name="usuario" placeholder="Nombre de usuario" required>
+      <input type="password" name="contrasena" id="password" placeholder="Contraseña" required>
+      <input type="password" name="verificar_contrasena" placeholder="Verifica tu contraseña" required>
+      <input type="submit" value="Registrarse">
+    </form>
+    <p class="password-verification">La contraseña debe tener al menos 8 caracteres.</p>
+  </div>
+</body>
+</html>
