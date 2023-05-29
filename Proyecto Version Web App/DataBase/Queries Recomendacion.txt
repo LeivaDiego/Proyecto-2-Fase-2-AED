@@ -1,0 +1,64 @@
+Queries Recomendacion
+
+//3 GENEROS 1 ESTUDIO
+MATCH (u:Usuario {username: "puxter"})-[:INTERESADO]->(g:Genero),
+(u)-[:INTERESADO]->(e:Estudio),
+(a:Anime)-[:PERTENECE]->(g),
+(e)-[:ANIMACION]->(a)
+WITH a, COUNT(DISTINCT g) AS generosCount
+WHERE generosCount = 3
+RETURN a
+
+
+//2 GENEROS 1 ESTUDIO
+MATCH (u:Usuario {username: "puxter"})-[:INTERESADO]->(g:Genero),
+(u)-[:INTERESADO]->(e:Estudio),
+(a:Anime)-[:PERTENECE]->(g),
+(e)-[:ANIMACION]->(a)
+WITH a, COUNT(DISTINCT g) AS generosCount
+WHERE generosCount = 2
+RETURN a
+
+
+//1 GENERO 1 ESTUDIO
+MATCH (u:Usuario {username: "puxter"})-[:INTERESADO]->(g:Genero),
+(u)-[:INTERESADO]->(e:Estudio),
+(a:Anime)-[:PERTENECE]->(g),
+(e)-[:ANIMACION]->(a)
+WITH a, COUNT(DISTINCT g) AS generosCount
+WHERE generosCount = 1
+RETURN a
+
+
+
+//3 GENEROS
+MATCH (u:Usuario {username: "puxter"})-[:INTERESADO]->(g:Genero),
+(a:Anime)-[:PERTENECE]->(g)
+WITH a, COUNT(DISTINCT g) AS generosCount
+WHERE generosCount = 3
+RETURN a
+
+
+
+//2 GENEROS
+MATCH (u:Usuario {username: "puxter"})-[:INTERESADO]->(g:Genero),
+(a:Anime)-[:PERTENECE]->(g)
+WITH a, COUNT(DISTINCT g) AS generosCount
+WHERE generosCount = 2
+RETURN a
+
+
+//1 GENERO
+MATCH (u:Usuario {username: "puxter"})-[:INTERESADO]->(g:Genero),
+(a:Anime)-[:PERTENECE]->(g)
+WITH a, COUNT(DISTINCT g) AS generosCount
+WHERE generosCount = 1
+RETURN a
+
+
+
+//1 ESTUDIO
+MATCH (u:Usuario {username: "puxter"})-[:INTERESADO]->(e:Estudio),
+(e)-[:ANIMACION]->(a:Anime)
+RETURN a
+

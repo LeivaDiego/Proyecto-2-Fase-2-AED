@@ -9,9 +9,7 @@ import org.neo4j.driver.TransactionWork;
 
 import static org.neo4j.driver.Values.parameters;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Clase que tiene los metodos necesarios para conectarse e interactuar con una base de datos en Neo4j
@@ -344,4 +342,235 @@ public class EmbeddedNeo4j implements AutoCloseable {
             });
         }
     }
+
+    /**
+     * Obtiene todos los animes que pertenecen a los 3 generos que el usuario esta interesado,
+     * y que pertenecen a alguno de los estudios que el usuario esta interesado
+     * @return una lista con los nombres de los animes de la base de datos
+     */
+    public ArrayList<String> getAnimesBy3Genres1Studio() {
+        try (Session session = driver.session()) {
+            ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
+                @Override
+                public ArrayList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                            "(u)-[:INTERESADO]->(e:Estudio), " +
+                            "(a:Anime)-[:PERTENECE]->(g), " +
+                            "(e)-[:ANIMACION]->(a) " +
+                            "WITH a, COUNT(DISTINCT g) AS generosCount " +
+                            "WHERE generosCount = 3 " +
+                            "RETURN a.titulo");
+                    ArrayList<String> myAnimes = new ArrayList<>();
+                    List<Record> registros = result.list();
+                    for (Record registro : registros) {
+                        myAnimes.add(registro.get("a.titulo").asString());
+                    }
+                    return myAnimes;
+                }
+            });
+            return animes;
+        }
+    }
+
+    /**
+     * Obtiene todos los animes que pertenecen a los 3 generos que el usuario esta interesado,
+     * @return una lista con los nombres de los animes de la base de datos
+     */
+    public ArrayList<String> getAnimesBy3Genres() {
+        try (Session session = driver.session()) {
+            ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
+                @Override
+                public ArrayList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                            "(a:Anime)-[:PERTENECE]->(g) " +
+                            "WITH a, COUNT(DISTINCT g) AS generosCount " +
+                            "WHERE generosCount = 3 " +
+                            "RETURN a.titulo");
+                    ArrayList<String> myAnimes = new ArrayList<>();
+                    List<Record> registros = result.list();
+                    for (Record registro : registros) {
+                        myAnimes.add(registro.get("a.titulo").asString());
+                    }
+                    return myAnimes;
+                }
+            });
+            return animes;
+        }
+    }
+
+    /**
+     * Obtiene todos los animes que pertenecen a 2 de los 3 generos que el usuario esta interesado,
+     * y que pertenecen a alguno de los estudios que el usuario esta interesado
+     * @return una lista con los nombres de los animes de la base de datos
+     */
+    public ArrayList<String> getAnimesBy2Genre1Studio() {
+        try (Session session = driver.session()) {
+            ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
+                @Override
+                public ArrayList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                            "(u)-[:INTERESADO]->(e:Estudio), " +
+                            "(a:Anime)-[:PERTENECE]->(g), " +
+                            "(e)-[:ANIMACION]->(a) " +
+                            "WITH a, COUNT(DISTINCT g) AS generosCount " +
+                            "WHERE generosCount = 2 " +
+                            "RETURN a.titulo");
+                    ArrayList<String> myAnimes = new ArrayList<>();
+                    List<Record> registros = result.list();
+                    for (Record registro : registros) {
+                        myAnimes.add(registro.get("a.titulo").asString());
+                    }
+                    return myAnimes;
+                }
+            });
+            return animes;
+        }
+    }
+
+    /**
+     * Obtiene todos los animes que pertenecen a 2 los 3 generos que el usuario esta interesado,
+     * @return una lista con los nombres de los animes de la base de datos
+     */
+    public ArrayList<String> getAnimesBy2Genres() {
+        try (Session session = driver.session()) {
+            ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
+                @Override
+                public ArrayList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                            "(a:Anime)-[:PERTENECE]->(g) " +
+                            "WITH a, COUNT(DISTINCT g) AS generosCount " +
+                            "WHERE generosCount = 2 " +
+                            "RETURN a.titulo");
+                    ArrayList<String> myAnimes = new ArrayList<>();
+                    List<Record> registros = result.list();
+                    for (Record registro : registros) {
+                        myAnimes.add(registro.get("a.titulo").asString());
+                    }
+                    return myAnimes;
+                }
+            });
+            return animes;
+        }
+    }
+
+    /**
+     * Obtiene todos los animes que pertenecen a 1 de los 3 generos que el usuario esta interesado,
+     * y que pertenecen a alguno de los estudios que el usuario esta interesado
+     *
+     * @return una lista con los nombres de los animes de la base de datos
+     */
+    public ArrayList<String> getAnimesBy1Genre1Studio() {
+        try (Session session = driver.session()) {
+            ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
+                @Override
+                public ArrayList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                            "(u)-[:INTERESADO]->(e:Estudio), " +
+                            "(a:Anime)-[:PERTENECE]->(g), " +
+                            "(e)-[:ANIMACION]->(a) " +
+                            "WITH a, COUNT(DISTINCT g) AS generosCount " +
+                            "WHERE generosCount = 1 " +
+                            "RETURN a.titulo");
+                    ArrayList<String> myAnimes = new ArrayList<>();
+                    List<Record> registros = result.list();
+                    for (Record registro : registros) {
+                        myAnimes.add(registro.get("a.titulo").asString());
+                    }
+                    return myAnimes;
+                }
+            });
+            return animes;
+        }
+    }
+
+    /**
+     * Obtiene todos los animes que pertenecen a 1 de los 3 generos que el usuario esta interesado,
+     * @return una lista con los nombres de los animes de la base de datos
+     */
+    public ArrayList<String> getAnimesBy1Genre() {
+        try (Session session = driver.session()) {
+            ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
+                @Override
+                public ArrayList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                            "(a:Anime)-[:PERTENECE]->(g) " +
+                            "WITH a, COUNT(DISTINCT g) AS generosCount " +
+                            "WHERE generosCount = 1 " +
+                            "RETURN a.titulo");
+                    ArrayList<String> myAnimes = new ArrayList<>();
+                    List<Record> registros = result.list();
+                    for (Record registro : registros) {
+                        myAnimes.add(registro.get("a.titulo").asString());
+                    }
+                    return myAnimes;
+                }
+            });
+            return animes;
+        }
+    }
+
+
+    /**
+     * Obtiene todos los animes que pertenecen a alguno de los estudios que el usuario esta interesado
+     * @return una lista con los nombres de los animes de la base de datos
+     */
+    public ArrayList<String> getAnimesBy1Studio() {
+        try (Session session = driver.session()) {
+            ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
+                @Override
+                public ArrayList<String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(e:Estudio), " +
+                            "(e)-[:ANIMACION]->(a:Anime) " +
+                            "RETURN a.titulo");
+                    ArrayList<String> myAnimes = new ArrayList<>();
+                    List<Record> registros = result.list();
+                    for (Record registro : registros) {
+                        myAnimes.add(registro.get("a.titulo").asString());
+                    }
+                    return myAnimes;
+                }
+            });
+            return animes;
+        }
+    }
+
+    /**
+     * Crea una "mega lista" de animes que cumplan con ciertos criterios de interés para el usuario.
+     *
+     * @return una lista con los nombres de los animes de la base de datos
+     */
+    public ArrayList<String> createMegaList() {
+        // Inicializar la "mega lista"
+        ArrayList<String> megaList = new ArrayList<>();
+
+        // Ejecutar cada método y agregar sus resultados a la "mega lista"
+        ArrayList<String> listA = getAnimesBy3Genres1Studio(); // reemplaza esto con el método correcto
+        if (!listA.isEmpty()) megaList.addAll(listA);
+
+        ArrayList<String> listD = getAnimesBy3Genres(); // reemplaza esto con el método correcto
+        if (!listD.isEmpty()) megaList.addAll(listD);
+
+        ArrayList<String> listB = getAnimesBy2Genre1Studio(); // reemplaza esto con el método correcto
+        if (!listB.isEmpty()) megaList.addAll(listB);
+
+        ArrayList<String> listE = getAnimesBy2Genres(); // reemplaza esto con el método correcto
+        if (!listE.isEmpty()) megaList.addAll(listE);
+
+        ArrayList<String> listC = getAnimesBy1Genre1Studio(); // reemplaza esto con el método correcto
+        if (!listC.isEmpty()) megaList.addAll(listC);
+
+        ArrayList<String> listF = getAnimesBy1Genre(); // reemplaza esto con el método correcto
+        if (!listF.isEmpty()) megaList.addAll(listF);
+
+        ArrayList<String> listG = getAnimesBy1Studio(); // reemplaza esto con el método correcto
+        if (!listG.isEmpty()) megaList.addAll(listG);
+
+        // Eliminar duplicados de la "mega lista" manteniendo el orden
+        LinkedHashSet<String> hashSet = new LinkedHashSet<>(megaList);
+        ArrayList<String> finalList = new ArrayList<>(hashSet);
+
+        return finalList;
+    }
+
+
 }

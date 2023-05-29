@@ -1,6 +1,4 @@
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Programa de recomendaciones de Anime
@@ -17,6 +15,8 @@ public class Main {
         String genre;
         String studio;
         String anime;
+        ArrayList<String>  topTemp;
+        ArrayList<String> recomended;
         int option = 0;
         vista.printWelcome();
         vista.printLogIn();
@@ -107,7 +107,19 @@ public class Main {
                             }
                             break;
                         case 3:
-                            
+                            System.out.println("=== Recomendaciones ===");
+                            if (db.userHasInterests(currentUser.getUsername())){
+                                System.out.println("Este es tu TOP 10 animes que te recomendamos");
+                                System.out.println("Basados en tus preferencias actuales");
+                                recomended = db.createMegaList();
+                                topTemp = new ArrayList<>(recomended.subList(0,10));
+                                LinkedList<String> top10 = new LinkedList<>(topTemp);
+                                vista.printList(top10);
+                            }else {
+                                System.out.println("Vaya parece que aun no has configurado tus preferencias");
+                            }
+
+
                             break;
                         case 4:
                             // mi perfil
