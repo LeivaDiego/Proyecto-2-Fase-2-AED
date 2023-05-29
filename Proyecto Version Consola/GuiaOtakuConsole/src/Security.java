@@ -1,7 +1,7 @@
 public class Security {
     private static final int SHIFT = 3; // cantidad de desplazamiento para el cifrado de César
 
-    public static boolean isLessThanEightChars(String str) {
+    public boolean isLessThanEightChars(String str) {
         return str.length() < 8;
     }
     public static String encrypt(String plaintext) {
@@ -22,7 +22,7 @@ public class Security {
         return cipherText.toString();
     }
 
-    public static String decrypt(String cipherText) {
+    public String decrypt(String cipherText) {
         StringBuilder plaintext = new StringBuilder();
 
         for (char c : cipherText.toCharArray()) {

@@ -59,7 +59,7 @@ public class View {
      * Mensaje de seleccion de opcion
      */
     public void printSelect(){
-        System.out.println("Seleccione una opción: \n");
+        System.out.println("Seleccione una opción: ");
     }
 
     /**

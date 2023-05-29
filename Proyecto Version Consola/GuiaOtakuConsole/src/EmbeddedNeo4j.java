@@ -69,4 +69,28 @@ public class EmbeddedNeo4j implements AutoCloseable{
         }
     }
 
+    public boolean checkCredentials(String username, String password) {
+        try (Session session = driver.session()) {
+            String encryptedPassword = Security.encrypt(password);
+            return session.readTransaction(new TransactionWork<Boolean>() {
+                @Override
+                public Boolean execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: $username, contrasenia: $contrasenia}) RETURN u",
+                            parameters("username", username, "contrasenia", encryptedPassword));
+
+                    return result.hasNext(); // True if the user exists, false otherwise.
+                }
+            });
+        }
+    }
+    public void login(String username, String password) {
+        if (checkCredentials(username, password)) {
+            Usuario currentUser = new Usuario();
+            currentUser.setUsername(username);
+        } else {
+            System.out.println("Usuario o contraseña no validos");
+        }
+    }
+
+
 }
