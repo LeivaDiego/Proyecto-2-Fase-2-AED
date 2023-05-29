@@ -1,0 +1,924 @@
+// Generacion de nodos Genero----------------------------------------------------------------------------------
+CREATE (:Genero {nombre: "Acción"})
+CREATE (:Genero {nombre: "Aventura"})
+CREATE (:Genero {nombre: "Comedia"})
+CREATE (:Genero {nombre: "Drama"})
+CREATE (:Genero {nombre: "Fantasía"})
+CREATE (:Genero {nombre: "Shounen"})
+CREATE (:Genero {nombre: "Thriller"})
+CREATE (:Genero {nombre: "Romance"})
+CREATE (:Genero {nombre: "Sci-Fi"})
+CREATE (:Genero {nombre: "Shoujo"})
+CREATE (:Genero {nombre: "Sobrenatural"})
+CREATE (:Genero {nombre: "Seinen"})
+CREATE (:Genero {nombre: "Deportes"})
+CREATE (:Genero {nombre: "Harem"})
+CREATE (:Genero {nombre: "Isekai"})
+
+
+// Generacion de nodos Estudio---------------------------------------------------------------------------------
+CREATE (:Estudio {nombre: "Toei Animation"})
+CREATE (:Estudio {nombre: "MAPPA"})
+CREATE (:Estudio {nombre: "A-1 Pictures"})
+CREATE (:Estudio {nombre: "TMS"})
+CREATE (:Estudio {nombre: "Production I.G"})
+CREATE (:Estudio {nombre: "Madhouse"})
+CREATE (:Estudio {nombre: "TNK"})
+CREATE (:Estudio {nombre: "Bones"})
+CREATE (:Estudio {nombre: "White Fox"})
+CREATE (:Estudio {nombre: "Sunrise"})
+CREATE (:Estudio {nombre: "Lerche"})
+CREATE (:Estudio {nombre: "Pierrot"})
+CREATE (:Estudio {nombre: "Kyoto Animation"})
+CREATE (:Estudio {nombre: "Gainax"})
+CREATE (:Estudio {nombre: "David Production"})
+CREATE (:Estudio {nombre: "Ufotable"})
+CREATE (:Estudio {nombre: "Wit Studio"})
+
+
+// Generacion de nodos Anime-----------------------------------------------------------------------------------
+CREATE (:Anime {titulo: "One Piece", descripcion: "Las aventuras del pirata Monkey D. Luffy en su búsqueda del tesoro One Piece.", capitulos: 1023, emision: "Octubre 20, 1999", finalizado: "No", autor: "Eiichiro Oda", url: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/f154230aab3191aba977f337d392f812.jpe"})
+
+CREATE (:Anime {titulo: "Attack on Titan (Shingeki no Kyojin)", descripcion: "Humanos luchan por su supervivencia contra gigantes humanoides conocidos como titanes.", capitulos: 75, emision: "Abril 7, 2013", finalizado: "Sí", autor: "Hajime Isayama", url: "https://static.wikia.nocookie.net/doblaje/images/9/92/Attack_on_Titan.png/revision/latest?cb=20200512043004&path-prefix=es"})
+
+CREATE (:Anime {titulo: "Sword Art Online", descripcion: "Jugadores quedan atrapados en un MMORPG de realidad virtual, luchando por sobrevivir.", capitulos: 96, emision: "Julio 7, 2012", finalizado: "No", autor: "Reki Kawahara", url: "https://static.wikia.nocookie.net/doblaje/images/9/9c/SAO_Aincrad_Arc.jpg/revision/latest?cb=20230130074414&path-prefix=es"})
+
+CREATE (:Anime {titulo: "Fruits Basket", descripcion: "Tohru Honda se ve envuelta en una familia maldita por el zodiaco chino.", capitulos: 63, emision: "Abril 6, 2019", finalizado: "Sí", autor: "Natsuki Takaya", url: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/0a34f193aa46a27cd75f5ee553834c41.jpe"})
+
+CREATE (:Anime {titulo: "Psycho-Pass", descripcion: "En un futuro donde es posible medir y cuantificar la mente y las emociones de la gente, esta historia sigue a los miembros de la Unidad de Investigación Criminal de la Oficina de Seguridad Pública.", capitulos: 41, emision: "Octubre 12, 2012", finalizado: "No", autor: "Gen Urobuchi", url: "https://pics.filmaffinity.com/Psycho_Pass_Serie_de_TV-750734297-large.jpg"})
+
+CREATE (:Anime {titulo: "Haikyuu!!", descripcion: "Un chico lucha por convertirse en el mejor jugador de vóley en la escuela secundaria.", capitulos: 85, emision: "Abril 6, 2014", finalizado: "Sí", autor: "Haruichi Furudate", url: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/af5f2304138a2ebe9caf5b7d0b1e2f01.jpe"})
+
+CREATE (:Anime {titulo: "Overlord", descripcion: "Un jugador de MMORPG queda atrapado en el juego como su personaje de juego, un poderoso señor de la muerte.", capitulos: 39, emision: "Julio 7, 2015", finalizado: "No", autor: "Kugane Maruyama", url: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/59dd9785564f46c3cf2a18b38149f5a1.jpe"})
+
+CREATE (:Anime {titulo: "High School DxD", descripcion: "Un chico es reencarnado como un demonio después de ser asesinado en su primera cita.", capitulos: 48, emision: "Enero 6, 2012", finalizado: "No", autor: "Ichiei Ishibumi", url: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/0f3c1f6c3b75aaa9b8062f19df77d5e9.jpe"})
+
+CREATE (:Anime {titulo: "My Hero Academia (Boku no Hero Academia)", descripcion: "En un mundo donde la mayoría de las personas tienen superpoderes, un chico sin poderes aspira a convertirse en un héroe.", capitulos: 137, emision: "Abril 3, 2016", finalizado: "No", autor: "Kohei Horikoshi", url: "https://static.wikia.nocookie.net/doblaje/images/5/5d/MHA_Temporada_6.jpg/revision/latest?cb=20230118041958&path-prefix=es"})
+
+CREATE (:Anime {titulo: "Steins;Gate", descripcion: "Un grupo de amigos logra modificar una microonda para enviar mensajes de texto al pasado.", capitulos: 24, emision: "Abril 6, 2011", finalizado: "Sí", autor: "Nitroplus", url: "https://m.media-amazon.com/images/M/MV5BMjUxMzE4ZDctODNjMS00MzIwLThjNDktODkwYjc5YWU0MDc0XkEyXkFqcGdeQXVyNjc3OTE4Nzk@._V1_FMjpg_UX1000_.jpg"})
+
+CREATE (:Anime {titulo: "Cowboy Bebop", descripcion: "En el año 2071, una tripulación de caza-recompensas vaga por el espacio, siguiendo pistas sobre criminales y una recompensa perdida.", capitulos: 26, emision: "Abril 3, 1998", finalizado: "Sí", autor: "Hajime Yatate", url: "https://pics.filmaffinity.com/Cowboy_Bebop_Serie_de_TV-548837932-large.jpg"})
+
+CREATE (:Anime {titulo: "Death Note", descripcion: "Un estudiante de secundaria encuentra un cuaderno sobrenatural que le permite matar a cualquiera simplemente escribiendo el nombre de la persona en sus páginas.", capitulos: 37, emision: "Octubre 3, 2006", finalizado: "Sí", autor: "Tsugumi Ohba", url: "https://m.media-amazon.com/images/M/MV5BNjRiNmNjMmMtN2U2Yi00ODgxLTk3OTMtMmI1MTI1NjYyZTEzXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_FMjpg_UX1000_.jpg"})
+
+CREATE (:Anime {titulo: "Re:Zero - Starting Life in Another World", descripcion: "Subaru Natsuki es transportado a un mundo de fantasía, donde descubre que tiene la capacidad de volver en el tiempo cada vez que muere.", capitulos: 50, emision: "Abril 4, 2016", finalizado: "No", autor: "Tappei Nagatsuki", url: "https://m.media-amazon.com/images/M/MV5BN2NlM2Y5Y2MtYjU5Mi00ZjZiLWFjNjMtZDNiYzJlMjhkOWZiXkEyXkFqcGdeQXVyNjc2NjA5MTU@._V1_FMjpg_UX1000_.jpg"})
+
+CREATE (:Anime {titulo: "Nana", descripcion: "Dos chicas con el mismo nombre pero con personalidades diferentes comparten un apartamento en Tokyo.", capitulos: 47, emision: "Abril 5, 2006", finalizado: "Sí", autor: "Ai Yazawa", url: "https://m.media-amazon.com/images/M/MV5BODQ1YjhlZjgtNWVjOS00M2U1LWE4MGUtZjNmYjQyZjQ5ZDQyXkEyXkFqcGdeQXVyMTUyNjc3NDQ4._V1_.jpg"})
+
+CREATE (:Anime {titulo: "Monster Musume", descripcion: "En un mundo donde criaturas de fantasía coexisten con los humanos, un hombre se ve obligado a albergar a una serie de monstruosas chicas en su casa.", capitulos: 12, emision: "Julio 7, 2015", finalizado: "Sí", autor: "Okayado", url: "https://m.media-amazon.com/images/I/81POKz1RBNL._AC_UF1000,1000_QL80_.jpg"})
+
+CREATE (:Anime {titulo: "Dragon Ball Z", descripcion: "Las continuas aventuras de Goku y sus amigos defendiendo la Tierra de poderosos villanos.", capitulos: 291, emision: "Abril 26, 1989", finalizado: "Sí", autor: "Akira Toriyama", url: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/073a1f2b16cbf46ebe4c72b8316da398.jpe"})
+
+CREATE (:Anime {titulo: "Vinland Saga", descripcion: "Thorfinn, un joven vikingo, busca venganza por la muerte de su padre.", capitulos: 24, emision: "Julio 8, 2019", finalizado: "No", autor: "Makoto Yukimura", url: "https://pics.filmaffinity.com/Vinland_Saga_Serie_de_TV-969782218-large.jpg"})
+
+CREATE (:Anime {titulo: "Aldnoah.Zero", descripcion: "En un futuro alternativo, la humanidad ha colonizado Marte y una guerra estalla entre Marte y la Tierra.", capitulos: 24, emision: "Julio 5, 2014", finalizado: "Sí", autor: "Gen Urobuchi", url: "https://m.media-amazon.com/images/M/MV5BMjM4OGIxMmYtNmJjNS00ZmE1LTg5MzAtMGQ1YWI4MmUxMzY3XkEyXkFqcGdeQXVyMTA3OTEyODI1._V1_.jpg"})
+
+CREATE (:Anime {titulo: "Yuri on Ice", descripcion: "Un patinador artístico lucha por su carrera mientras desarrolla una relación con su ídolo.", capitulos: 12, emision: "Octubre 6, 2016", finalizado: "Sí", autor: "Mitsurō Kubo", url: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/f3e549761eee21d3938b60cbfdd0396b.jpe"})
+
+CREATE (:Anime {titulo: "Mob Psycho 100", descripcion: "Un estudiante de secundaria con poderes psíquicos lucha por vivir una vida normal.", capitulos: 25, emision: "Julio 11, 2016", finalizado: "Sí", autor: "ONE", url: "https://m.media-amazon.com/images/M/MV5BYWIwZjhkMzgtOWExYi00ZGIwLTg1ZTktNjQyZWIxYWFmZTc0XkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg"})
+
+CREATE (:Anime {titulo: "Fairy Tail", descripcion: "Lucy Heartfilia, una maga celestial, se une a la famosa Fairy Tail, un gremio de magos.", capitulos: 328, emision: "Octubre 12, 2009", finalizado: "Sí", autor: "Hiro Mashima", url: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/18638d44e180fd1b51870106b88e46e4.jpe"})
+
+CREATE (:Anime {titulo: "Code Geass: Lelouch of the Rebellion", descripcion: "Lelouch, un príncipe exiliado, obtiene el poder de controlar la mente y busca vengarse del Imperio Británico.", capitulos: 50, emision: "Octubre 6, 2006", finalizado: "Sí", autor: "Sunrise", url: "https://m.media-amazon.com/images/M/MV5BODhlZDFlYjMtOTA2My00MGU4LWI1NWQtOTg5ZThhNGQwYTEzXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg"})
+
+CREATE (:Anime {titulo: "Clannad", descripcion: "Tomoya Okazaki, un estudiante desinteresado, se encuentra con varias chicas en su escuela y su vida comienza a tener un giro dramático.", capitulos: 23, emision: "Octubre 5, 2007", finalizado: "Sí", autor: "Key", url: "https://static.wikia.nocookie.net/doblaje-fanon/images/1/1f/MV5BN2VmM2NmMGUtOGQ2OC00Y2ZjLTljNTctYjhmMDJjZjQ5ZDQyXkEyXkFqcGdeQXVyMTUyNjc3NDQ4._V1_.jpg"})
+
+CREATE (:Anime {titulo: "Fullmetal Alchemist: Brotherhood", descripcion: "Dos hermanos usan la alquimia para buscar la Piedra Filosofal para recuperar sus cuerpos después de un fallido intento de revivir a su madre.", capitulos: 64, emision: "Abril 5, 2009", finalizado: "Sí", autor: "Hiromu Arakawa", url: "https://m.media-amazon.com/images/M/MV5BZmEzN2YzOTItMDI5MS00MGU4LWI1NWQtOTg5ZThhNGQwYTEzXkEyXkFqcGdeQXVyNTA4NzY1MzY@._V1_.jpg"})
+
+CREATE (:Anime {titulo: "Neon Genesis Evangelion", descripcion: "Adolescentes pilotan mechas gigantes para proteger la Tierra de seres misteriosos conocidos como ángeles.", capitulos: 26, emision: "Octubre 4, 1995", finalizado: "Sí", autor: "Hideaki Anno", url: "https://static.wikia.nocookie.net/doblaje/images/a/a6/Neon_Genesis_Evangelion_-_Poster.jpg/revision/latest?cb=20220519030722&path-prefix=es"})
+
+CREATE (:Anime {titulo: "Bleach", descripcion: "Ichigo Kurosaki obtiene los poderes de un Shinigami y debe proteger a los humanos de los espíritus malignos y guiar a las almas difuntas al más allá.", capitulos: 366, emision: "Octubre 5, 2004", finalizado: "Sí", autor: "Tite Kubo", url: "https://pics.filmaffinity.com/Bleach_Serie_de_TV-235942666-large.jpg"})
+
+CREATE (:Anime {titulo: "InuYasha", descripcion: "Kagome Higurashi viaja a la época feudal de Japón después de caer en un pozo en su casa y se une a InuYasha en la búsqueda de las piezas de la Joya de Cuatro Almas.", capitulos: 193, emision: "Octubre 16, 2000", finalizado: "Sí", autor: "Rumiko Takahashi", url: "https://static.wikia.nocookie.net/inuyasha/images/1/18/InuYasha_%28Anime%29.jpg/revision/latest?cb=20201013123530&path-prefix=es"})
+
+CREATE (:Anime {titulo: "JoJo's Bizarre Adventure", descripcion: "Las múltiples generaciones de la familia Joestar utilizan su poder único para combatir a enemigos sobrenaturales.", capitulos: 190, emision: "Octubre 6, 2012", finalizado: "No", autor: "Hirohiko Araki", url: "https://m.media-amazon.com/images/M/MV5BZDc3NGQ3ZWQtYjNkOC00MjhiLTg2N2YtNmZlOGNiZTFkOWNhXkEyXkFqcGdeQXVyNjc2NjA5MTU@._V1_FMjpg_UX1000_.jpg"})
+
+CREATE (:Anime {titulo: "One Punch Man", descripcion: "La historia sigue a Saitama, un héroe que puede derrotar a cualquier oponente con un solo golpe pero siempre se aburre porque nunca encuentra un oponente digno.", capitulos: 24, emision: "Octubre 5, 2015", finalizado: "No", autor: "ONE", url: "https://m.media-amazon.com/images/M/MV5BZjJlNzE5YzEtYzQwYS00NTBjLTk5YzAtYzUwOWQyM2E3OGI2XkEyXkFqcGdeQXVyNTgyNTA4MjM@._V1_.jpg"})
+
+CREATE (:Anime {titulo: "Naruto Shippuden", descripcion: "Naruto Uzumaki regresa al pueblo Konoha después de dos años de entrenamiento. Con él, se reúne el equipo de ninjas para enfrentarse a la organización Akatsuki.", capitulos: 500, emision: "Febrero 15, 2007", finalizado: "Sí", autor: "Masashi Kishimoto", url: "https://m.media-amazon.com/images/M/MV5BZGFiMWFhNDAtMzUyZS00NmQ2LTljNDYtMmZjNTc5MDUxMzViXkEyXkFqcGdeQXVyNjAwNDUxODI@._V1_.jpg"})
+
+CREATE (:Anime {titulo: "Demon Slayer: Kimetsu no Yaiba", descripcion: "Tanjiro Kamado se embarca en una misión para convertirse en un cazador de demonios y vengar a su familia, mientras protege a su hermana, quien se convirtió en un demonio.", capitulos: 26, emision: "Abril 6, 2019", finalizado: "Sí", autor: "Koyoharu Gotouge", url: "https://www.crunchyroll.com/imgsrv/display/thumbnail/480x720/catalog/crunchyroll/43e953c8f4b2c449de55f643ba0da5ee.jpg"})
+
+
+// Creacion de relaciones de animacion-------------------------------------------------------------------------------------------
+MATCH (a:Anime {titulo: "One Piece"}), (e:Estudio {nombre: "Toei Animation"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Attack on Titan (Shingeki no Kyojin)"}), (e:Estudio {nombre: "MAPPA"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Sword Art Online"}), (e:Estudio {nombre: "A-1 Pictures"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Fruits Basket"}), (e:Estudio {nombre: "TMS"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Psycho-Pass"}), (e:Estudio {nombre: "Production I.G"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Haikyuu!!"}), (e:Estudio {nombre: "Production I.G"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Overlord"}), (e:Estudio {nombre: "Madhouse"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "High School DxD"}), (e:Estudio {nombre: "TNK"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "My Hero Academia (Boku no Hero Academia)"}), (e:Estudio {nombre: "Bones"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Steins;Gate"}), (e:Estudio {nombre: "White Fox"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Cowboy Bebop"}), (e:Estudio {nombre: "Sunrise"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Death Note"}), (e:Estudio {nombre: "Madhouse"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Re:Zero - Starting Life in Another World"}), (e:Estudio {nombre: "White Fox"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Nana"}), (e:Estudio {nombre: "Madhouse"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Monster Musume"}), (e:Estudio {nombre: "Lerche"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Dragon Ball Z"}), (e:Estudio {nombre: "Toei Animation"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Vinland Saga"}), (e:Estudio {nombre: "Wit Studio"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Aldnoah.Zero"}), (e:Estudio {nombre: "A-1 Pictures"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Yuri on Ice"}), (e:Estudio {nombre: "MAPPA"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Mob Psycho 100"}), (e:Estudio {nombre: "Bones"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Fairy Tail"}), (e:Estudio {nombre: "A-1 Pictures"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Code Geass: Lelouch of the Rebellion"}), (e:Estudio {nombre: "Sunrise"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Clannad"}), (e:Estudio {nombre: "Kyoto Animation"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Fullmetal Alchemist: Brotherhood"}), (e:Estudio {nombre: "Bones"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Neon Genesis Evangelion"}), (e:Estudio {nombre: "Gainax"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Bleach"}), (e:Estudio {nombre: "Pierrot"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "InuYasha"}), (e:Estudio {nombre: "Sunrise"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "JoJo's Bizarre Adventure"}), (e:Estudio {nombre: "David Production"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "One Punch Man"}), (e:Estudio {nombre: "Madhouse"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Naruto Shippuden"}), (e:Estudio {nombre: "Pierrot"})
+CREATE (e)-[:ANIMACION]->(a)
+
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Demon Slayer: Kimetsu no Yaiba"}), (e:Estudio {nombre: "Ufotable"})
+CREATE (e)-[:ANIMACION]->(a)
+
+
+// Creacion de relaciones pertenece a------------------------------------------------------------------------------
+
+// One Piece
+MATCH (a:Anime {titulo: "One Piece"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "One Piece"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "One Piece"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "One Piece"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "One Piece"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "One Piece"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Attack on Titan (Shingeki no Kyojin)
+WITH count(*) AS dummy
+MATCH (a:Anime {titulo: "Attack on Titan (Shingeki no Kyojin)"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Attack on Titan (Shingeki no Kyojin)"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Attack on Titan (Shingeki no Kyojin)"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Attack on Titan (Shingeki no Kyojin)"})
+MATCH (g:Genero {nombre: "Thriller"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Attack on Titan (Shingeki no Kyojin)"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Sword Art Online
+MATCH (a:Anime {titulo: "Sword Art Online"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Sword Art Online"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Sword Art Online"})
+MATCH (g:Genero {nombre: "Romance"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Sword Art Online"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Sword Art Online"})
+MATCH (g:Genero {nombre: "Sci-Fi"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Fruits Basket
+MATCH (a:Anime {titulo: "Fruits Basket"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Fruits Basket"})
+MATCH (g:Genero {nombre: "Romance"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Fruits Basket"})
+MATCH (g:Genero {nombre: "Shoujo"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Fruits Basket"})
+MATCH (g:Genero {nombre: "Sobrenatural"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Psycho-Pass
+MATCH (a:Anime {titulo: "Psycho-Pass"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Psycho-Pass"})
+MATCH (g:Genero {nombre: "Sci-Fi"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Psycho-Pass"})
+MATCH (g:Genero {nombre: "Seinen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Psycho-Pass"})
+MATCH (g:Genero {nombre: "Thriller"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Haikyuu!!
+MATCH (a:Anime {titulo: "Haikyuu!!"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Haikyuu!!"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Haikyuu!!"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Haikyuu!!"})
+MATCH (g:Genero {nombre: "Deportes"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Overlord
+MATCH (a:Anime {titulo: "Overlord"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Overlord"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Overlord"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Overlord"})
+MATCH (g:Genero {nombre: "Isekai"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// High School DxD
+MATCH (a:Anime {titulo: "High School DxD"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "High School DxD"})
+MATCH (g:Genero {nombre: "Romance"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "High School DxD"})
+MATCH (g:Genero {nombre: "Harem"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "High School DxD"})
+MATCH (g:Genero {nombre: "Sobrenatural"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// My Hero Academia (Boku no Hero Academia)
+MATCH (a:Anime {titulo: "My Hero Academia (Boku no Hero Academia)"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "My Hero Academia (Boku no Hero Academia)"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "My Hero Academia (Boku no Hero Academia)"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "My Hero Academia (Boku no Hero Academia)"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Steins;Gate
+MATCH (a:Anime {titulo: "Steins;Gate"})
+MATCH (g:Genero {nombre: "Thriller"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Steins;Gate"})
+MATCH (g:Genero {nombre: "Sci-Fi"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Cowboy Bebop
+MATCH (a:Anime {titulo: "Cowboy Bebop"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Cowboy Bebop"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Cowboy Bebop"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Cowboy Bebop"})
+MATCH (g:Genero {nombre: "Sci-Fi"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Death Note
+MATCH (a:Anime {titulo: "Death Note"})
+MATCH (g:Genero {nombre: "Thriller"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Death Note"})
+MATCH (g:Genero {nombre: "Sobrenatural"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Re:Zero - Starting Life in Another World
+MATCH (a:Anime {titulo: "Re:Zero - Starting Life in Another World"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Re:Zero - Starting Life in Another World"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Re:Zero - Starting Life in Another World"})
+MATCH (g:Genero {nombre: "Thriller"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Re:Zero - Starting Life in Another World"})
+MATCH (g:Genero {nombre: "Isekai"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Nana
+MATCH (a:Anime {titulo: "Nana"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Nana"})
+MATCH (g:Genero {nombre: "Romance"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Nana"})
+MATCH (g:Genero {nombre: "Shoujo"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Monster Musume
+MATCH (a:Anime {titulo: "Monster Musume"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Monster Musume"})
+MATCH (g:Genero {nombre: "Romance"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Monster Musume"})
+MATCH (g:Genero {nombre: "Harem"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Monster Musume"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Dragon Ball Z
+MATCH (a:Anime {titulo: "Dragon Ball Z"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Dragon Ball Z"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Dragon Ball Z"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Dragon Ball Z"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Dragon Ball Z"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Vinland Saga
+MATCH (a:Anime {titulo: "Vinland Saga"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Vinland Saga"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Vinland Saga"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Vinland Saga"})
+MATCH (g:Genero {nombre: "Seinen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Aldnoah.Zero
+MATCH (a:Anime {titulo: "Aldnoah.Zero"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Aldnoah.Zero"})
+MATCH (g:Genero {nombre: "Sci-Fi"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Yuri on Ice
+MATCH (a:Anime {titulo: "Yuri on Ice"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Yuri on Ice"})
+MATCH (g:Genero {nombre: "Deportes"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Yuri on Ice"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Mob Psycho 100
+MATCH (a:Anime {titulo: "Mob Psycho 100"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Mob Psycho 100"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Mob Psycho 100"})
+MATCH (g:Genero {nombre: "Sobrenatural"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Mob Psycho 100"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Fairy Tail
+MATCH (a:Anime {titulo: "Fairy Tail"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Fairy Tail"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Fairy Tail"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Fairy Tail"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Fairy Tail"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Code Geass: Lelouch of the Rebellion
+MATCH (a:Anime {titulo: "Code Geass: Lelouch of the Rebellion"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Code Geass: Lelouch of the Rebellion"})
+MATCH (g:Genero {nombre: "Sci-Fi"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Code Geass: Lelouch of the Rebellion"})
+MATCH (g:Genero {nombre: "Thriller"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Clannad
+MATCH (a:Anime {titulo: "Clannad"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Clannad"})
+MATCH (g:Genero {nombre: "Romance"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Clannad"})
+MATCH (g:Genero {nombre: "Sobrenatural"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Fullmetal Alchemist: Brotherhood
+MATCH (a:Anime {titulo: "Fullmetal Alchemist: Brotherhood"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Fullmetal Alchemist: Brotherhood"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Fullmetal Alchemist: Brotherhood"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Fullmetal Alchemist: Brotherhood"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Neon Genesis Evangelion
+MATCH (a:Anime {titulo: "Neon Genesis Evangelion"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Neon Genesis Evangelion"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Neon Genesis Evangelion"})
+MATCH (g:Genero {nombre: "Sci-Fi"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Bleach
+MATCH (a:Anime {titulo: "Bleach"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Bleach"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Bleach"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Bleach"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Bleach"})
+MATCH (g:Genero {nombre: "Sobrenatural"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// InuYasha
+MATCH (a:Anime {titulo: "InuYasha"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "InuYasha"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "InuYasha"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "InuYasha"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "InuYasha"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "InuYasha"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "InuYasha"})
+MATCH (g:Genero {nombre: "Romance"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// JoJo's Bizarre Adventure
+MATCH (a:Anime {titulo: "JoJo's Bizarre Adventure"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "JoJo's Bizarre Adventure"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "JoJo's Bizarre Adventure"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "JoJo's Bizarre Adventure"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// One Punch Man
+MATCH (a:Anime {titulo: "One Punch Man"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "One Punch Man"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "One Punch Man"})
+MATCH (g:Genero {nombre: "Sci-Fi"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "One Punch Man"})
+MATCH (g:Genero {nombre: "Seinen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "One Punch Man"})
+MATCH (g:Genero {nombre: "Sobrenatural"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Naruto Shippuden
+MATCH (a:Anime {titulo: "Naruto Shippuden"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Naruto Shippuden"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Naruto Shippuden"})
+MATCH (g:Genero {nombre: "Comedia"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Naruto Shippuden"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Naruto Shippuden"})
+MATCH (g:Genero {nombre: "Fantasía"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Naruto Shippuden"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+
+// Demon Slayer: Kimetsu no Yaiba
+MATCH (a:Anime {titulo: "Demon Slayer: Kimetsu no Yaiba"})
+MATCH (g:Genero {nombre: "Acción"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Demon Slayer: Kimetsu no Yaiba"})
+MATCH (g:Genero {nombre: "Aventura"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Demon Slayer: Kimetsu no Yaiba"})
+MATCH (g:Genero {nombre: "Drama"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Demon Slayer: Kimetsu no Yaiba"})
+MATCH (g:Genero {nombre: "Shounen"})
+CREATE (a)-[:PERTENECE]->(g)
+WITH count(*) AS dummy
+
+MATCH (a:Anime {titulo: "Demon Slayer: Kimetsu no Yaiba"})
+MATCH (g:Genero {nombre: "Sobrenatural"})
+CREATE (a)-[:PERTENECE]->(g)
