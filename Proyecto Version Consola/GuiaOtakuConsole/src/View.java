@@ -8,6 +8,22 @@ import java.util.Map;
 public class View {
 
     /**
+     * Metodo que extrae la informacion del usuario y la muestra en pantalla
+     * @param userInfo
+     */
+    public void showUserInfo(Map<String, String> userInfo) {
+        if (userInfo != null) {
+            System.out.println("Información del Usuario:");
+            System.out.println("Nombre de usuario: " + userInfo.get("username"));
+            System.out.println("Nombre: " + userInfo.get("firstName"));
+            System.out.println("Apellido: " + userInfo.get("lastName"));
+            System.out.println("Contraseña: " + userInfo.get("password"));
+        } else {
+            System.out.println("No se encontró información del usuario.");
+        }
+    }
+
+    /**
      * Metodo que muestra la informacion del anime
      * @param animeInfo
      */

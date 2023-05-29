@@ -572,5 +572,33 @@ public class EmbeddedNeo4j implements AutoCloseable {
         return finalList;
     }
 
+    /**
+     * Metodo que busca la informacion del usuario en la base de datos
+     * @param username el usuario actual
+     * @return la informacion del usuario
+     */
+    public Map<String, String> getUserInfo(String username) {
+        try (Session session = driver.session()) {
+            return session.readTransaction(new TransactionWork<Map<String, String>>() {
+                @Override
+                public Map<String, String> execute(Transaction tx) {
+                    Result result = tx.run("MATCH (u:Usuario {username: $username}) RETURN u.username AS username, u.contrasenia AS password, u.nombre AS firstName, u.apellido AS lastName",
+                            parameters("username", username));
+
+                    if (result.hasNext()) {
+                        Record record = result.next();
+                        Map<String, String> userInfo = new HashMap<>();
+                        userInfo.put("username", record.get("username").asString());
+                        userInfo.put("password", Security.decrypt(record.get("password").asString()));
+                        userInfo.put("firstName", Security.decrypt(record.get("firstName").asString()));
+                        userInfo.put("lastName", Security.decrypt(record.get("lastName").asString()));
+                        return userInfo;
+                    } else {
+                        return null;
+                    }
+                }
+            });
+        }
+    }
 
 }

@@ -24,7 +24,7 @@ public class Security {
         return cipherText.toString();
     }
 
-    public String decrypt(String cipherText) {
+    public static String decrypt(String cipherText) {
         StringBuilder plaintext = new StringBuilder();
 
         for (char c : cipherText.toCharArray()) {

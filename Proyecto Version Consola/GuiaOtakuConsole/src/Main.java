@@ -122,7 +122,8 @@ public class Main {
 
                             break;
                         case 4:
-                            // mi perfil
+                            System.out.println("Mi Perfil");
+                            vista.showUserInfo(db.getUserInfo(currentUser.getUsername()));
                             break;
                         case 5:
                             //Cerrar de sesion
