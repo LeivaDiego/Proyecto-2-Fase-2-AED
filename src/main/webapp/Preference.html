@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>LaGuiaOTAKU - Preferencias</title>
+    <meta charset="UTF-8">
+    <style>
+      /* Estilos CSS */
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 20px;
+        text-align: center;
+        background-color: #191919;
+        color: #fff;
+      }
+      
+      h1 {
+        font-size: 48px;
+        margin-bottom: 20px;
+        color: #F44336;
+      }
+      
+      header {
+        padding: 20px 0;
+      }
+      
+      nav {
+        background-color: #333;
+        padding: 10px 0;
+      }
+      
+      nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+      }
+      
+      nav ul li {
+        margin: 0 10px;
+      }
+      
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+      }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    
+    .preferences-form {
+      max-width: 600px;
+      width: 100%;
+      background-color: #333;
+      padding: 20px;
+      border-radius: 5px;
+      margin-top: 40px; /* Subir el recuadro de los botones */
+    }
+    
+    .section {
+      margin-bottom: 20px;
+    }
+    
+    .section h2 {
+      font-size: 24px;
+      margin: 10px 0;
+      color: #fff;
+    }
+    
+    .checkbox-group {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+    }
+    
+    .checkbox {
+      margin-right: 20px;
+      margin-bottom: 10px;
+    }
+    
+    .checkbox label {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      background-color: #666;
+      padding: 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    
+    .checkbox input[type="checkbox"] {
+      display: none;
+    }
+    
+    .checkbox input[type="checkbox"]:checked + label {
+      background-color: #F44336;
+    }
+    
+    .checkbox input[type="checkbox"]:disabled + label {
+      background-color: #ccc;
+      cursor: not-allowed;
+    }
+    
+    .submit-button {
+      width: 100%;
+      padding: 10px;
+      background-color: #ccc;
+      color: #fff;
+      border: none;
+      cursor: not-allowed;
+      border-radius: 3px;
+      font-size: 16px;
+      transition: background-color 0.3s ease;
+    }
+    
+    .submit-button.enabled {
+      background-color: #F44336;
+      cursor: pointer;
+    }
+  </style>
+  <script>
+    function guardarPreferencias() {
+      alert("Preferencias guardadas. ¡Puedes buscar nuevas recomendaciones!");
+      window.location.href = "home.html";
+    }
+
+    function updateButtonState() {
+      var submitButton = document.querySelector('.submit-button');
+      var sections = document.getElementsByClassName("section");
+
+      for (var i = 0; i < sections.length; i++) {
+        var checkboxes = sections[i].querySelectorAll('input[type="checkbox"]');
+        var selectedCount = 0;
+
+        for (var j = 0; j < checkboxes.length; j++) {
+          if (checkboxes[j].checked) {
+            selectedCount++;
+          }
+        }
+
+        var sectionCheckboxes = Array.from(checkboxes);
+
+        if (selectedCount === 3) {
+          sectionCheckboxes.forEach(function (checkbox) {
+            if (!checkbox.checked) {
+              checkbox.disabled = true;
+            }
+          });
+        } else {
+          sectionCheckboxes.forEach(function (checkbox) {
+            checkbox.disabled = false;
+          });
+        }
+      }
+
+      var totalSelected = document.querySelectorAll('input[type="checkbox"]:checked').length;
+
+      if (totalSelected === 9) {
+        submitButton.classList.add("enabled");
+        submitButton.disabled = false;
+      } else {
+        submitButton.classList.remove("enabled");
+        submitButton.disabled = true;
+      }
+    }
+
+    function handleCheckboxChange() {
+      var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      var sectionCheckboxes = Array.from(this.closest('.section').querySelectorAll('input[type="checkbox"]'));
+      var selectedCount = sectionCheckboxes.filter((checkbox) => checkbox.checked).length;
+
+      if (selectedCount === 3) {
+        checkboxes.forEach(function (checkbox) {
+          if (!sectionCheckboxes.includes(checkbox) && !checkbox.checked) {
+            checkbox.disabled = true;
+          }
+        });
+      } else {
+        checkboxes.forEach(function (checkbox) {
+          checkbox.disabled = false;
+        });
+      }
+
+      updateButtonState();
+    }
+  </script>
+</head>
+<body>
+  <header class="header">
+    <h1>LaGuiaOTAKU</h1>
+  </header>
+
+  <nav class="menu">
+    <ul>
+    <li><a href="Home.html">Inicio</a></li>
+      <li><a href="Explore.html">Explorar</a></li>
+      <li><a href="Preference.html">Preferencias</a></li>
+      <li><a href="Recomended.html">Recomendaciones</a></li>
+      <li><a href="User.html">Mi Usuario</a></li>
+      <li><a href="Log in.html">Salir</a></li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <form class="preferences-form" onsubmit="event.preventDefault();">
+      <div class="section">
+        <h2>Géneros</h2>
+        <p>Selecciona las 3 opciones que más te gustan:</p>
+        <div class="checkbox-group">
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-1" value="Accion" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-1">Acción</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-2" value="Aventura" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-2">Aventura</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-3" value="Comedia" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-3">Comedia</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-4" value="Drama" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-4">Drama</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-5" value="Fantasia" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-5">Fantasía</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-6" value="Romance" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-6">Romance</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-7" value="SciFi" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-7">Sci-Fi</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-8" value="Seinen" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-8">Seinen</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-9" value="Shoujo" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-9">Shoujo</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-10" value="Shounen" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-10">Shounen</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-11" value="Sobrenatural" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-11">Sobrenatural</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-12" value="Thriller" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-12">Thriller</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-13" value="Deportes" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-13">Deportes</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-14" value="Isekai" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-14">Isekai</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="genero" id="genero-15" value="Harem" onchange="handleCheckboxChange.call(this)">
+            <label for="genero-15">Harem</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2>Estudios de animación</h2>
+        <p>Selecciona las 3 opciones que más te gustan:</p>
+        <div class="checkbox-group">
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-1" value="Wit Studio" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-1">Wit Studio</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-2" value="Studio Pierrot" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-2">Studio Pierrot</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-3" value="Toei Animation" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-3">Toei Animation</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-4" value="MAPPA" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-4">MAPPA</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-5" value="A-1 Pictures" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-5">A-1 Pictures</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-6" value="Ufotable" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-6">Ufotable</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-7" value="CoMix Wave Films" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-7">CoMix Wave Films</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-8" value="Sunrise" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-8">Sunrise</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-9" value="TMS Entertainment" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-9">TMS Entertainment</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-10" value="AIC Build" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-10">AIC Build</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-11" value="Lerche" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-11">Lerche</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-12" value="Bridge" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-12">Bridge</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-13" value="Kyoto Animation" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-13">Kyoto Animation</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-14" value="Bones" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-14">Bones</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-15" value="Gainax" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-15">Gainax</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="estudio" id="estudio-16" value="David Production" onchange="handleCheckboxChange.call(this)">
+            <label for="estudio-16">David Production</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="section">
+        <h2>Autores</h2>
+        <p>Selecciona las 3 opciones que más te gustan:</p>
+        <div class="checkbox-group">
+          <div class="checkbox">
+            <input type="checkbox" name="autor" id="autor-1" value="Autor 1" onchange="handleCheckboxChange.call(this)">
+            <label for="autor-1">Autor 1</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="autor" id="autor-2" value="Autor 2" onchange="handleCheckboxChange.call(this)">
+            <label for="autor-2">Autor 2</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="autor" id="autor-3" value="Autor 3" onchange="handleCheckboxChange.call(this)">
+            <label for="autor-3">Autor 3</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="autor" id="autor-4" value="Autor 4" onchange="handleCheckboxChange.call(this)">
+            <label for="autor-4">Autor 4</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="autor" id="autor-5" value="Autor 5" onchange="handleCheckboxChange.call(this)">
+            <label for="autor-5">Autor 5</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="autor" id="autor-6" value="Autor 6" onchange="handleCheckboxChange.call(this)">
+            <label for="autor-6">Autor 6</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="autor" id="autor-7" value="Autor 7" onchange="handleCheckboxChange.call(this)">
+            <label for="autor-7">Autor 7</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="autor" id="autor-8" value="Autor 8" onchange="handleCheckboxChange.call(this)">
+            <label for="autor-8">Autor 8</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="autor" id="autor-9" value="Autor 9" onchange="handleCheckboxChange.call(this)">
+            <label for="autor-9">Autor 9</label>
+          </div>
+          <div class="checkbox">
+            <input type="checkbox" name="autor" id="autor-10" value="Autor 10" onchange="handleCheckboxChange.call(this)">
+            <label for="autor-10">Autor 10</label>
+          </div>
+        </div>
+      </div>
+      
+      <button class="submit-button" onclick="guardarPreferencias()" disabled>Guardar Preferencias</button>
+    </form>
+  </div>
+</body>
+</html>
