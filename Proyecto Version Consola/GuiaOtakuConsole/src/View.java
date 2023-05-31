@@ -133,8 +133,8 @@ public class View {
      * Muestra en pantalla el mensaje de bienvenida al usuario actual
      * @param user el usuario actual
      */
-    public void printWelcomeUser(Usuario user){
-        System.out.println("\nBienvenido :"+user.getUsername());
+    public void userSession(Usuario user){
+        System.out.println("\nSesión de :"+user.getUsername());
     }
 
     /**
@@ -150,7 +150,7 @@ public class View {
      * @param window la pantalla a la que se regresara
      */
     public void printReturn(String window){
-        Message("Presiona cualquier letra para regresar a "+window);
+        Message("Presiona cualquier letra y luego presiona la tecla Enter para regresar a "+window);
     }
 
     /**

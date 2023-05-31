@@ -26,6 +26,9 @@ public class Security {
             } else if (Character.isLowerCase(c)) {
                 char encryptedChar = (char) ((c + SHIFT - 'a') % 26 + 'a');
                 cipherText.append(encryptedChar);
+            } else if (Character.isDigit(c)) {
+                char encryptedChar = (char) ((c + SHIFT - '0') % 10 + '0');
+                cipherText.append(encryptedChar);
             } else {
                 cipherText.append(c); // no alterar otros caracteres
             }
@@ -49,6 +52,9 @@ public class Security {
             } else if (Character.isLowerCase(c)) {
                 char decryptedChar = (char) ((c - SHIFT - 'a' + 26) % 26 + 'a');
                 plaintext.append(decryptedChar);
+            } else if (Character.isDigit(c)) {
+                char decryptedChar = (char) ((c - SHIFT - '0' + 10) % 10 + '0');
+                plaintext.append(decryptedChar);
             } else {
                 plaintext.append(c); // no alterar otros caracteres
             }
@@ -68,8 +74,8 @@ public class Security {
         boolean numerosCorrectos = false;
 
         while (!numerosCorrectos) {
-            System.out.print("Ingrese una cadena de 3 números separados por comas (por ejemplo, '1,2,3'): ");
-            String numeros = scanner.nextLine();
+            System.out.print("Ingrese una cadena de 3 números separados por comas (por ejemplo: 1,2,3): ");
+            String numeros = scanner.next();
             String[] numerosArray = numeros.split(",");
 
             // Verificar formato

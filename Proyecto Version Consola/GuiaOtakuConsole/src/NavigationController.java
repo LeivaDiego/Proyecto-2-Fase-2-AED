@@ -35,25 +35,22 @@ public class NavigationController {
     public void startApplication() {
         int option = 0;
         boolean flag = true;
+        vista.printWelcome();
         while(flag) {
-            vista.printWelcome();
             vista.printEntryMenu();
             option = security.validOption();
             switch (option) {
                 case 1:
                     // iniciar sesion
                     login();
-                    flag = false;
                     break;
                 case 2:
                     // registrarse
                     register();
-                    flag = false;
                     break;
                 case 3:
                     // salir
                     vista.Message("Gracias por utilizar LaGuiaOtaku");
-                    flag = false;
                     break;
                 default:
                     vista.printInvalidOption();
@@ -66,20 +63,17 @@ public class NavigationController {
      * Realiza el inicio de sesion a un usuario existente
      */
     protected void login() {
-        boolean flag = true;
-        while (flag){
-            vista.Message("=== INICIO DE SESIÓN ===");
-            vista.Message("Ingrese su nombre de usuario: ");
-            String username = input.nextLine();
-            vista.Message("Ingrese su contraseña: ");
-            String password = input.nextLine();
-            if (db.checkCredentials(username, password)) {
-                currentUser.setUsername(username);
-                HomePage();
-            } else {
-                vista.printError("El usuario o contraseña son incorrectos");
-                vista.Message("Intentelo nuevamente");
-            }
+        vista.Message("=== INICIO DE SESIÓN ===");
+        vista.Message("Ingrese su nombre de usuario: ");
+        String username = input.next();
+        vista.Message("Ingrese su contraseña: ");
+        String password = input.next();
+        if (db.checkCredentials(username, password)) {
+            currentUser.setUsername(username);
+            HomePage();
+        } else {
+            vista.printError("El usuario o contraseña son incorrectos");
+            vista.Message("Intentelo nuevamente");
         }
     }
 
@@ -93,20 +87,15 @@ public class NavigationController {
         String username = input.next();
         vista.Message("Ingrese su nombre: ");
         String firstName = input.next();
-        firstName = Security.encrypt(firstName);
         vista.Message("Ingrese su apellido: ");
         String lastName = input.next();
-        lastName = Security.encrypt(lastName);
         vista.Message("Ingrese su contraseña: ");
         String password = input.next();
-        password = Security.encrypt(password);
 
         if (db.createUser(username, password, firstName, lastName)) {
             vista.Message("Usuario creado exitosamente");
-            Usuario currentUser = new Usuario();
             currentUser.setUsername(username);
             HomePage();
-
         } else {
             vista.printError("El usuario ya existe, intente nuevamente");
         }
@@ -119,7 +108,7 @@ public class NavigationController {
         int option = 0;
         boolean flag = true;
         while (flag){
-            vista.printWelcomeUser(currentUser);
+            vista.userSession(currentUser);
             vista.printHomePage();
             option = security.validOption();
             switch (option){
