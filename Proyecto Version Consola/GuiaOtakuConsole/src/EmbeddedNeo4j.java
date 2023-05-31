@@ -348,18 +348,19 @@ public class EmbeddedNeo4j implements AutoCloseable {
      * y que pertenecen a alguno de los estudios que el usuario esta interesado
      * @return una lista con los nombres de los animes de la base de datos
      */
-    public ArrayList<String> getAnimesBy3Genres1Studio() {
+    public ArrayList<String> getAnimesBy3Genres1Studio(String username) {
         try (Session session = driver.session()) {
             ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
                 @Override
                 public ArrayList<String> execute(Transaction tx) {
-                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                    Result result = tx.run("MATCH (u:Usuario {username: $username})-[:INTERESADO]->(g:Genero), " +
                             "(u)-[:INTERESADO]->(e:Estudio), " +
                             "(a:Anime)-[:PERTENECE]->(g), " +
                             "(e)-[:ANIMACION]->(a) " +
                             "WITH a, COUNT(DISTINCT g) AS generosCount " +
                             "WHERE generosCount = 3 " +
-                            "RETURN a.titulo");
+                            "RETURN a.titulo",
+                            parameters("username",username));
                     ArrayList<String> myAnimes = new ArrayList<>();
                     List<Record> registros = result.list();
                     for (Record registro : registros) {
@@ -376,16 +377,16 @@ public class EmbeddedNeo4j implements AutoCloseable {
      * Obtiene todos los animes que pertenecen a los 3 generos que el usuario esta interesado,
      * @return una lista con los nombres de los animes de la base de datos
      */
-    public ArrayList<String> getAnimesBy3Genres() {
+    public ArrayList<String> getAnimesBy3Genres(String username) {
         try (Session session = driver.session()) {
             ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
                 @Override
                 public ArrayList<String> execute(Transaction tx) {
-                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                    Result result = tx.run("MATCH (u:Usuario {username: $username})-[:INTERESADO]->(g:Genero), " +
                             "(a:Anime)-[:PERTENECE]->(g) " +
                             "WITH a, COUNT(DISTINCT g) AS generosCount " +
                             "WHERE generosCount = 3 " +
-                            "RETURN a.titulo");
+                            "RETURN a.titulo",parameters("username", username));
                     ArrayList<String> myAnimes = new ArrayList<>();
                     List<Record> registros = result.list();
                     for (Record registro : registros) {
@@ -403,18 +404,18 @@ public class EmbeddedNeo4j implements AutoCloseable {
      * y que pertenecen a alguno de los estudios que el usuario esta interesado
      * @return una lista con los nombres de los animes de la base de datos
      */
-    public ArrayList<String> getAnimesBy2Genre1Studio() {
+    public ArrayList<String> getAnimesBy2Genre1Studio(String username) {
         try (Session session = driver.session()) {
             ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
                 @Override
                 public ArrayList<String> execute(Transaction tx) {
-                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                    Result result = tx.run("MATCH (u:Usuario {username: $username})-[:INTERESADO]->(g:Genero), " +
                             "(u)-[:INTERESADO]->(e:Estudio), " +
                             "(a:Anime)-[:PERTENECE]->(g), " +
                             "(e)-[:ANIMACION]->(a) " +
                             "WITH a, COUNT(DISTINCT g) AS generosCount " +
                             "WHERE generosCount = 2 " +
-                            "RETURN a.titulo");
+                            "RETURN a.titulo",parameters("username", username));
                     ArrayList<String> myAnimes = new ArrayList<>();
                     List<Record> registros = result.list();
                     for (Record registro : registros) {
@@ -431,16 +432,16 @@ public class EmbeddedNeo4j implements AutoCloseable {
      * Obtiene todos los animes que pertenecen a 2 los 3 generos que el usuario esta interesado,
      * @return una lista con los nombres de los animes de la base de datos
      */
-    public ArrayList<String> getAnimesBy2Genres() {
+    public ArrayList<String> getAnimesBy2Genres(String username) {
         try (Session session = driver.session()) {
             ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
                 @Override
                 public ArrayList<String> execute(Transaction tx) {
-                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                    Result result = tx.run("MATCH (u:Usuario {username: $username})-[:INTERESADO]->(g:Genero), " +
                             "(a:Anime)-[:PERTENECE]->(g) " +
                             "WITH a, COUNT(DISTINCT g) AS generosCount " +
                             "WHERE generosCount = 2 " +
-                            "RETURN a.titulo");
+                            "RETURN a.titulo",parameters("username", username));
                     ArrayList<String> myAnimes = new ArrayList<>();
                     List<Record> registros = result.list();
                     for (Record registro : registros) {
@@ -459,18 +460,18 @@ public class EmbeddedNeo4j implements AutoCloseable {
      *
      * @return una lista con los nombres de los animes de la base de datos
      */
-    public ArrayList<String> getAnimesBy1Genre1Studio() {
+    public ArrayList<String> getAnimesBy1Genre1Studio(String username) {
         try (Session session = driver.session()) {
             ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
                 @Override
                 public ArrayList<String> execute(Transaction tx) {
-                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                    Result result = tx.run("MATCH (u:Usuario {username: $username})-[:INTERESADO]->(g:Genero), " +
                             "(u)-[:INTERESADO]->(e:Estudio), " +
                             "(a:Anime)-[:PERTENECE]->(g), " +
                             "(e)-[:ANIMACION]->(a) " +
                             "WITH a, COUNT(DISTINCT g) AS generosCount " +
                             "WHERE generosCount = 1 " +
-                            "RETURN a.titulo");
+                            "RETURN a.titulo",parameters("username", username));
                     ArrayList<String> myAnimes = new ArrayList<>();
                     List<Record> registros = result.list();
                     for (Record registro : registros) {
@@ -487,16 +488,16 @@ public class EmbeddedNeo4j implements AutoCloseable {
      * Obtiene todos los animes que pertenecen a 1 de los 3 generos que el usuario esta interesado,
      * @return una lista con los nombres de los animes de la base de datos
      */
-    public ArrayList<String> getAnimesBy1Genre() {
+    public ArrayList<String> getAnimesBy1Genre(String username) {
         try (Session session = driver.session()) {
             ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
                 @Override
                 public ArrayList<String> execute(Transaction tx) {
-                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(g:Genero), " +
+                    Result result = tx.run("MATCH (u:Usuario {username: $username})-[:INTERESADO]->(g:Genero), " +
                             "(a:Anime)-[:PERTENECE]->(g) " +
                             "WITH a, COUNT(DISTINCT g) AS generosCount " +
                             "WHERE generosCount = 1 " +
-                            "RETURN a.titulo");
+                            "RETURN a.titulo",parameters("username", username));
                     ArrayList<String> myAnimes = new ArrayList<>();
                     List<Record> registros = result.list();
                     for (Record registro : registros) {
@@ -514,14 +515,14 @@ public class EmbeddedNeo4j implements AutoCloseable {
      * Obtiene todos los animes que pertenecen a alguno de los estudios que el usuario esta interesado
      * @return una lista con los nombres de los animes de la base de datos
      */
-    public ArrayList<String> getAnimesBy1Studio() {
+    public ArrayList<String> getAnimesBy1Studio(String username) {
         try (Session session = driver.session()) {
             ArrayList<String> animes = session.readTransaction(new TransactionWork<ArrayList<String>>() {
                 @Override
                 public ArrayList<String> execute(Transaction tx) {
-                    Result result = tx.run("MATCH (u:Usuario {username: \"puxter\"})-[:INTERESADO]->(e:Estudio), " +
+                    Result result = tx.run("MATCH (u:Usuario {username: $username})-[:INTERESADO]->(e:Estudio), " +
                             "(e)-[:ANIMACION]->(a:Anime) " +
-                            "RETURN a.titulo");
+                            "RETURN a.titulo",parameters("username", username));
                     ArrayList<String> myAnimes = new ArrayList<>();
                     List<Record> registros = result.list();
                     for (Record registro : registros) {
@@ -538,30 +539,30 @@ public class EmbeddedNeo4j implements AutoCloseable {
      * Crea una "mega lista" de animes que cumplan con ciertos criterios de interés para el usuario.
      * @return una lista con los nombres de los animes de la base de datos
      */
-    public ArrayList<String> createMegaList() {
+    public ArrayList<String> createMegaList(String user) {
         // Inicializar la "mega lista"
         ArrayList<String> megaList = new ArrayList<>();
 
         // Ejecutar cada método y agregar sus resultados a la "mega lista"
-        ArrayList<String> listA = getAnimesBy3Genres1Studio(); // reemplaza esto con el método correcto
+        ArrayList<String> listA = getAnimesBy3Genres1Studio(user); // reemplaza esto con el método correcto
         if (!listA.isEmpty()) megaList.addAll(listA);
 
-        ArrayList<String> listD = getAnimesBy3Genres(); // reemplaza esto con el método correcto
+        ArrayList<String> listD = getAnimesBy3Genres(user); // reemplaza esto con el método correcto
         if (!listD.isEmpty()) megaList.addAll(listD);
 
-        ArrayList<String> listB = getAnimesBy2Genre1Studio(); // reemplaza esto con el método correcto
+        ArrayList<String> listB = getAnimesBy2Genre1Studio(user); // reemplaza esto con el método correcto
         if (!listB.isEmpty()) megaList.addAll(listB);
 
-        ArrayList<String> listE = getAnimesBy2Genres(); // reemplaza esto con el método correcto
+        ArrayList<String> listE = getAnimesBy2Genres(user); // reemplaza esto con el método correcto
         if (!listE.isEmpty()) megaList.addAll(listE);
 
-        ArrayList<String> listC = getAnimesBy1Genre1Studio(); // reemplaza esto con el método correcto
+        ArrayList<String> listC = getAnimesBy1Genre1Studio(user); // reemplaza esto con el método correcto
         if (!listC.isEmpty()) megaList.addAll(listC);
 
-        ArrayList<String> listF = getAnimesBy1Genre(); // reemplaza esto con el método correcto
+        ArrayList<String> listF = getAnimesBy1Genre(user); // reemplaza esto con el método correcto
         if (!listF.isEmpty()) megaList.addAll(listF);
 
-        ArrayList<String> listG = getAnimesBy1Studio(); // reemplaza esto con el método correcto
+        ArrayList<String> listG = getAnimesBy1Studio(user); // reemplaza esto con el método correcto
         if (!listG.isEmpty()) megaList.addAll(listG);
 
         // Eliminar duplicados de la "mega lista" manteniendo el orden

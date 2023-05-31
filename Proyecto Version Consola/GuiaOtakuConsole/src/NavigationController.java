@@ -256,11 +256,17 @@ public class NavigationController {
         vista.Separator();
         vista.Message("=== RECOMENDACIONES ===");
         if (db.userHasInterests(currentUser.getUsername())){
-            vista.Message("Este es tu TOP 10 animes que te recomendamos");
+            vista.Message("Estas son todos los animes que te recomendamos");
             vista.Message("Basados en tus preferencias actuales");
-            ArrayList<String> recommended = db.createMegaList();
-            LinkedList<String> top = (LinkedList<String>) recommended.subList(0, recommended.size()-1);
-            vista.printList(top);
+            ArrayList<String> recommended = db.createMegaList(currentUser.getUsername());
+            if (recommended.isEmpty()){
+                vista.Message("Parece que no tenemos animes para ti");
+            }else {
+                for (int i = 0; i < recommended.size(); i++) {
+                    String item = recommended.get(i);
+                    System.out.println(i + ". " + item);
+                }
+            }
         } else {
             System.out.println("Vaya, parece que aún no has configurado tus preferencias");
             HomePage();
