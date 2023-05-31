@@ -6,5 +6,6 @@ public class Main {
     public static void main(String[] args) {
         NavigationController nav = new NavigationController();
         nav.startApplication();
+        System.out.println("Ha salido");
     }
 }

@@ -51,6 +51,7 @@ public class NavigationController {
                 case 3:
                     // salir
                     vista.Message("Gracias por utilizar LaGuiaOtaku");
+                    flag = false;
                     break;
                 default:
                     vista.printInvalidOption();
