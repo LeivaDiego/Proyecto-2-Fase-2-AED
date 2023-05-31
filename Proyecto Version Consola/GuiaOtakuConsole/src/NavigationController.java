@@ -259,9 +259,8 @@ public class NavigationController {
             vista.Message("Este es tu TOP 10 animes que te recomendamos");
             vista.Message("Basados en tus preferencias actuales");
             ArrayList<String> recommended = db.createMegaList();
-            ArrayList<String> topTemp = new ArrayList<>(recommended.subList(0, 10));
-            LinkedList<String> top10 = new LinkedList<>(topTemp);
-            vista.printList(top10);
+            LinkedList<String> top = (LinkedList<String>) recommended.subList(0, recommended.size()-1);
+            vista.printList(top);
         } else {
             System.out.println("Vaya, parece que aún no has configurado tus preferencias");
             HomePage();
