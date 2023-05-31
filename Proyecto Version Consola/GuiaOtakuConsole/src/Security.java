@@ -4,9 +4,18 @@ public class Security {
     private static final int SHIFT = 3; // cantidad de desplazamiento para el cifrado de César
     private final Scanner input;
 
+    /**
+     * Constructor de seguridad
+     */
     public Security() {
         this.input = new Scanner(System.in);
     }
+
+    /**
+     * Metodo que aplica un cifrado del Cesar simple a informacion
+     * @param plaintext el dato a cifrar
+     * @return el dato cifrado
+     */
     public static String encrypt(String plaintext) {
         StringBuilder cipherText = new StringBuilder();
 
@@ -25,6 +34,11 @@ public class Security {
         return cipherText.toString();
     }
 
+    /**
+     * Metodo que descifra un dato cifrado con el cifrado del cesar
+     * @param cipherText el texto cifrado
+     * @return el texto descifrado
+     */
     public static String decrypt(String cipherText) {
         StringBuilder plaintext = new StringBuilder();
 
@@ -45,8 +59,8 @@ public class Security {
 
     /**
      * Metodo que verifica que las opciones de preferencias si son validas
-     * @param inputList
-     * @return
+     * @param inputList la lista de entrada
+     * @return la lista valida
      */
     public List<String> validFormatPref(LinkedList<String> inputList) {
         Scanner scanner = new Scanner(System.in);
@@ -87,6 +101,10 @@ public class Security {
         return numerosValidos;
     }
 
+    /**
+     * Metodo que verifica si la opcion ingresada por el usuario es valida
+     * @return la opcion valida
+     */
     public int validOption(){
         while (true){
             try {

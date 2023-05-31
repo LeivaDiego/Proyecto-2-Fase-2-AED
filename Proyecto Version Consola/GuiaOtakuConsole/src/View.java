@@ -58,6 +58,7 @@ public class View {
      * Metodo que muestra el mensaje de bienvenida al usuario
      */
     public void printWelcome() {
+        Separator();
         System.out.println("************************************************");
         System.out.println("*                                              *");
         System.out.println("*               LA GUIA OTAKU                  *");
@@ -71,6 +72,7 @@ public class View {
      * Metodo que muestra la "ventana" de inicio de sesion o registro al usuario
      */
     public void printEntryMenu(){
+        Separator();
         System.out.println("Para ingresar a nuestro sistema porfavor elija una opción");
         System.out.println("1. Iniciar sesión");
         System.out.println("2. Registrarse");
@@ -82,6 +84,7 @@ public class View {
      * Metodo que muestra el menu principal de opciones al usuario
      */
     public void printHomePage(){
+        Separator();
         System.out.println("==== MENU PRINCIPAL ====");
         System.out.println("1. Explorar");
         System.out.println("2. Preferencias");
@@ -99,17 +102,26 @@ public class View {
     }
 
     /**
-     * Metodo que muestra un mensaje en pantalla
+     * Metodo que muestra cualquiera un mensaje en pantalla
      * @param msg el mensaje a mostrar
      */
     public void Message(String msg){
-        System.out.println(msg+"\n");
+        System.out.println(msg);
     }
+
+    /**
+     * Muestra un mensaje de error en pantalla y su razon
+     * @param msg la razon del error
+     */
     public void printError(String msg){
         System.out.println("ERROR " + msg);
     }
 
+    /**
+     * Muestra en pantalla el menu de exploracion
+     */
     public void printExplore(){
+        Separator();
         System.out.println("=== EXPLORAR ===");
         System.out.println("1. Ver animes por Género");
         System.out.println("2. Ver animes por Estudio");
@@ -117,17 +129,35 @@ public class View {
         printSelect();
     }
 
+    /**
+     * Muestra en pantalla el mensaje de bienvenida al usuario actual
+     * @param user el usuario actual
+     */
     public void printWelcomeUser(Usuario user){
         System.out.println("\nBienvenido :"+user.getUsername());
     }
 
+    /**
+     * Muestra un mensaje de que la opcion es no valida
+     */
     public void printInvalidOption(){
         printError("Opción inválida");
         Message("Intenta de nuevo");
     }
 
+    /**
+     * Muestra un mensaje que indica que se regresara a la pantalla anterior
+     * @param window la pantalla a la que se regresara
+     */
     public void printReturn(String window){
         Message("Presiona cualquier letra para regresar a "+window);
+    }
+
+    /**
+     * Muestra el separador en pantalla
+     */
+    public void Separator(){
+        System.out.println("-----------------------------------------------------------------------------------------");
     }
 }
 

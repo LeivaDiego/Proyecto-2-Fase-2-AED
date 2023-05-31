@@ -1,5 +1,3 @@
-import java.util.*;
-
 /**
  * Programa de recomendaciones de Anime
  * @author diego leiva, pablo orellana
@@ -9,7 +7,4 @@ public class Main {
         NavigationController nav = new NavigationController();
         nav.startApplication();
     }
-
-
-
 }
