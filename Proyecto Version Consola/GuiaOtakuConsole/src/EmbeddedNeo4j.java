@@ -536,7 +536,6 @@ public class EmbeddedNeo4j implements AutoCloseable {
 
     /**
      * Crea una "mega lista" de animes que cumplan con ciertos criterios de interés para el usuario.
-     *
      * @return una lista con los nombres de los animes de la base de datos
      */
     public ArrayList<String> createMegaList() {
@@ -573,7 +572,7 @@ public class EmbeddedNeo4j implements AutoCloseable {
     }
 
     /**
-     * Metodo que busca la informacion del usuario en la base de datos
+     * Metodo que busca la información del usuario en la base de datos
      * @param username el usuario actual
      * @return la informacion del usuario
      */

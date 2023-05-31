@@ -2,9 +2,10 @@ import java.util.*;
 
 public class Security {
     private static final int SHIFT = 3; // cantidad de desplazamiento para el cifrado de César
+    private final Scanner input;
 
-    public boolean isLessThanEightChars(String str) {
-        return str.length() < 8;
+    public Security() {
+        this.input = new Scanner(System.in);
     }
     public static String encrypt(String plaintext) {
         StringBuilder cipherText = new StringBuilder();
@@ -84,6 +85,18 @@ public class Security {
         }
 
         return numerosValidos;
+    }
+
+    public int validOption(){
+        while (true){
+            try {
+                int number = Integer.parseInt(input.next());
+                return number;
+            }catch (NumberFormatException e){
+                System.out.println("La opción no es válida");
+                System.out.println("Por favor, introduce un número");
+            }
+        }
     }
 
 }

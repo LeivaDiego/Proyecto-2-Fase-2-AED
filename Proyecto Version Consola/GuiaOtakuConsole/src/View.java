@@ -60,7 +60,7 @@ public class View {
     public void printWelcome() {
         System.out.println("************************************************");
         System.out.println("*                                              *");
-        System.out.println("*               La Guia Otaku                  *");
+        System.out.println("*               LA GUIA OTAKU                  *");
         System.out.println("*                                              *");
         System.out.println("************************************************\n");
         System.out.println("           Bienvenido a La Guia Otaku");
@@ -70,7 +70,7 @@ public class View {
     /**
      * Metodo que muestra la "ventana" de inicio de sesion o registro al usuario
      */
-    public void printLogIn(){
+    public void printEntryMenu(){
         System.out.println("Para ingresar a nuestro sistema porfavor elija una opción");
         System.out.println("1. Iniciar sesión");
         System.out.println("2. Registrarse");
@@ -82,7 +82,7 @@ public class View {
      * Metodo que muestra el menu principal de opciones al usuario
      */
     public void printHomePage(){
-        System.out.println("==== Menú Principal ====");
+        System.out.println("==== MENU PRINCIPAL ====");
         System.out.println("1. Explorar");
         System.out.println("2. Preferencias");
         System.out.println("3. Recomendaciones");
@@ -102,19 +102,32 @@ public class View {
      * Metodo que muestra un mensaje en pantalla
      * @param msg el mensaje a mostrar
      */
-    public void printMessage(String msg){
+    public void Message(String msg){
         System.out.println(msg+"\n");
+    }
+    public void printError(String msg){
+        System.out.println("ERROR " + msg);
     }
 
     public void printExplore(){
-        System.out.println("=== Explorar ===");
+        System.out.println("=== EXPLORAR ===");
         System.out.println("1. Ver animes por Género");
         System.out.println("2. Ver animes por Estudio");
+        System.out.println("3. Regresar al menu principal");
         printSelect();
     }
 
     public void printWelcomeUser(Usuario user){
         System.out.println("\nBienvenido :"+user.getUsername());
+    }
+
+    public void printInvalidOption(){
+        printError("Opción inválida");
+        Message("Intenta de nuevo");
+    }
+
+    public void printReturn(String window){
+        Message("Presiona cualquier letra para regresar a "+window);
     }
 }
 
