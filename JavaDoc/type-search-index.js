@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"<Unnamed>","l":"EmbeddedNeo4j"},{"p":"<Unnamed>","l":"Main"},{"p":"<Unnamed>","l":"NavigationController"},{"p":"<Unnamed>","l":"Security"},{"p":"<Unnamed>","l":"Usuario"},{"p":"<Unnamed>","l":"View"}]
