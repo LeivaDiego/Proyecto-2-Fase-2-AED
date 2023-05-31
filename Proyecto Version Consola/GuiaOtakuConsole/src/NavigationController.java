@@ -32,30 +32,55 @@ public class NavigationController {
     /**
      * Inicializa la aplicacion con la bienvenida y el menu de ingreso
      */
-    public void startApplication() {
-        int option = 0;
+    public void startApplication() throws Exception {
         boolean flag = true;
+        int option = 0;
         vista.printWelcome();
         while(flag) {
-            vista.printEntryMenu();
-            option = security.validOption();
-            switch (option) {
-                case 1:
-                    // iniciar sesion
-                    login();
-                    break;
-                case 2:
-                    // registrarse
-                    register();
-                    break;
-                case 3:
-                    // salir
-                    vista.Message("Gracias por utilizar LaGuiaOtaku");
-                    flag = false;
-                    break;
-                default:
-                    vista.printInvalidOption();
-                    break;
+            if (currentUser.getUsername() != null) { // Si el usuario está logueado
+                vista.userSession(currentUser);
+                vista.printHomePage();
+                option = security.validOption();
+                switch (option){
+                    case 1: //Explorar
+                        exploreAnime();
+                        break;
+                    case 2: //preferencias
+                        configurePreferences(currentUser);
+                        break;
+                    case 3: //recomendaciones
+                        showRecommendations(currentUser);
+                        break;
+                    case 4: // mi usuario
+                        myUser();
+                        break;
+                    case 5: //cerrar sesion
+                        vista.Message("Has cerrado Sesión");
+                        currentUser = new Usuario(); // Reiniciamos el usuario
+                        break;
+                    default:
+                        vista.printInvalidOption();
+                        break;
+                }
+            } else { // Si el usuario no está logueado
+                vista.printEntryMenu();
+                option = security.validOption();
+                switch (option) {
+                    case 1: // iniciar sesion
+                        login();
+                        break;
+                    case 2: // registrarse
+                        register();
+                        break;
+                    case 3: // salir
+                        vista.Message("Gracias por utilizar LaGuiaOtaku");
+                        flag = false;
+                        db.close();
+                        break;
+                    default:
+                        vista.printInvalidOption();
+                        break;
+                }
             }
         }
     }
@@ -63,7 +88,7 @@ public class NavigationController {
     /**
      * Realiza el inicio de sesion a un usuario existente
      */
-    protected void login() {
+    protected void login() throws Exception {
         vista.Message("=== INICIO DE SESIÓN ===");
         vista.Message("Ingrese su nombre de usuario: ");
         String username = input.next();
@@ -71,7 +96,8 @@ public class NavigationController {
         String password = input.next();
         if (db.checkCredentials(username, password)) {
             currentUser.setUsername(username);
-            HomePage();
+            //startApplication();
+            //HomePage();
         } else {
             vista.printError("El usuario o contraseña son incorrectos");
             vista.Message("Intentelo nuevamente");
@@ -81,7 +107,7 @@ public class NavigationController {
     /**
      * realiza la creacion de un usuario
      */
-    protected void register() {
+    protected void register() throws Exception {
         vista.Message("=== REGISTRO ===");
         vista.Message("Por favor complete los siguientes campos");
         vista.Message("Ingrese el nombre de usuario que desea: ");
@@ -96,50 +122,9 @@ public class NavigationController {
         if (db.createUser(username, password, firstName, lastName)) {
             vista.Message("Usuario creado exitosamente");
             currentUser.setUsername(username);
-            HomePage();
+            //startApplication();
         } else {
             vista.printError("El usuario ya existe, intente nuevamente");
-        }
-    }
-
-    /**
-     * Realiza el menu principal del programa
-     */
-    private void HomePage(){
-        int option = 0;
-        boolean flag = true;
-        while (flag){
-            vista.userSession(currentUser);
-            vista.printHomePage();
-            option = security.validOption();
-            switch (option){
-                case 1:
-                    //Explorar
-                    exploreAnime();
-                    break;
-                case 2:
-                    //preferencias
-                    configurePreferences(currentUser);
-                    break;
-                case 3:
-                    //recomendaciones
-                    showRecommendations(currentUser);
-                    break;
-                case 4:
-                    // mi usuario
-                    myUser();
-                    break;
-                case 5:
-                    //cerrar sesion
-                    flag = false;
-                    vista.Message("Has cerrado Sesión");
-                    startApplication();
-                    break;
-                case 6:
-                    vista.printInvalidOption();
-                    break;
-
-            }
         }
     }
 
@@ -147,7 +132,7 @@ public class NavigationController {
     /**
      * Realiza la seccion de exploracion
      */
-    private void exploreAnime() {
+    private void exploreAnime() throws Exception {
         int option = 0;
         boolean flag = true;
         boolean innerFlag= true;
@@ -191,7 +176,8 @@ public class NavigationController {
                     break;
                 case 3:
                     flag = false;
-                    HomePage();
+                    //HomePage();
+                    //startApplication();
             }
         }
     }
@@ -200,7 +186,7 @@ public class NavigationController {
      * realiza la seccion de preferencias
      * @param currentUser el username del usuario de sesion actual
      */
-    private void configurePreferences(Usuario currentUser) {
+    private void configurePreferences(Usuario currentUser) throws Exception {
         vista.Separator();
         vista.Message("=== PREFERENCIAS ===");
         String temp;
@@ -229,7 +215,8 @@ public class NavigationController {
             }
             vista.printReturn("MENU PRINCIPAL");
             temp = input.next();
-            HomePage();
+            //HomePage();
+            //startApplication();
         } else {
             System.out.println("¡Te invitamos a que selecciones tus categorías de interés!");
             System.out.println("GÉNEROS");
@@ -245,7 +232,8 @@ public class NavigationController {
             db.createInterests(currentUser.getUsername(), genreInterest, studioInterest);
             vista.printReturn("MENU PRINCIPAL");
             temp = input.next();
-            HomePage();
+            //HomePage();
+            //startApplication();
         }
     }
 
@@ -253,7 +241,8 @@ public class NavigationController {
      * realiza la seccion de recomendaciones
      * @param currentUser el username del usuario de sesion actual
      */
-    private void showRecommendations(Usuario currentUser) {
+    private void showRecommendations(Usuario currentUser) throws Exception {
+        String temp;
         vista.Separator();
         vista.Message("=== RECOMENDACIONES ===");
         if (db.userHasInterests(currentUser.getUsername())){
@@ -268,9 +257,14 @@ public class NavigationController {
                     System.out.println(i + ". " + item);
                 }
             }
+            vista.printReturn("MENU PRINCIPAL");
+            temp = input.next();
+            //HomePage();
+            //startApplication();
         } else {
             System.out.println("Vaya, parece que aún no has configurado tus preferencias");
-            HomePage();
+            //HomePage();
+            //startApplication();
         }
     }
 

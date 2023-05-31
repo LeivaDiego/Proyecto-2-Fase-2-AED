@@ -3,9 +3,8 @@
  * @author diego leiva, pablo orellana
  */
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         NavigationController nav = new NavigationController();
         nav.startApplication();
-        System.out.println("Ha salido");
     }
 }
